@@ -22,13 +22,15 @@ Connect 4 Gaming is like a dating app for people who want to play board games. Y
 
 ![Design image](connect4concept.PNG "Concept Image")
 
-There will be 6 pages to this application. A home page to log in, a search page to browse a list of board games, a favorites page to view and edit your favorite board game list, and a groups page where you can join chats with other nearby users who enjoy the same games you do. The chats page will be connected to the groups page. An about page will also exist found at the bottom of the home login page, though not pictured in this diagram.
+There will be 6 pages to this application. A home page to log in, a search page to browse a list of board games, a favorites page to view and edit your favorite board game list, and a groups page where you can join chats with other nearby users who enjoy the same games you do. The chats page will be connected to the groups page. An about page will also exist found at the bottom of the home login page, though not pictured in this diagram. Ignore the list of features - some have been added or removed since the initial concept idea.
 
 ### Key features
 
 - Account login, logout, and register with location data
 - Search a catalog of board games and add them to a personal favorites list
-- 
+- Edit and reorder a board game favorite list
+- Chat with other users from the local area who enjoy the same board games
+- See a description of the app and creator
 
 ### Technologies
 
