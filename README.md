@@ -22,14 +22,7 @@ Connect 4 Gaming is like a dating app for people who want to play board games. Y
 
 ![Design image](connect4concept.PNG "Concept Image")
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+There will be 5 pages to this application. A home page to log in, a search page to browse a list of board games, a favorites page to view and edit your favorite board game list, and a groups page where you can join chats with other nearby users who enjoy the same games you do.
 
 ### Key features
 
