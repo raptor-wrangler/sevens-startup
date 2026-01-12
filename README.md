@@ -12,7 +12,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] A concise and compelling elevator pitch
 - [ ] Description of key features
 - [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -22,13 +22,13 @@ Connect 4 Gaming is like a dating app for people who want to play board games. Y
 
 ![Design image](connect4concept.PNG "Concept Image")
 
-There will be 5 pages to this application. A home page to log in, a search page to browse a list of board games, a favorites page to view and edit your favorite board game list, and a groups page where you can join chats with other nearby users who enjoy the same games you do.
+There will be 6 pages to this application. A home page to log in, a search page to browse a list of board games, a favorites page to view and edit your favorite board game list, and a groups page where you can join chats with other nearby users who enjoy the same games you do. The chats page will be connected to the groups page. An about page will also exist found at the bottom of the home login page, though not pictured in this diagram.
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Account login, logout, and register with location data
+- Search a catalog of board games and add them to a personal favorites list
+- 
 
 ### Technologies
 
