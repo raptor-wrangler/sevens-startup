@@ -11,7 +11,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -38,10 +38,10 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - 6 different pages, login/register controls, images for board games and description page
 - **CSS** - A nice looking style with a gruvbox color scheme and many symbolic buttons for navigation
-- **React** - Single page application with routing and state hooks in order to make the website run more responsively
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **React** - A Single page application with routing and state hooks in order to make the website run more responsively
+- **Service** - Endpoints for login and logout, third party call to get geolocation and place databases (maybe a database of all board games as well), store/retrieve favorites, location
+- **DB/Login** - Stores login information, location, chat history, and favorites
+- **WebSocket** - Enables chat funtions between users and notifications when messages are sent
 
 ## 🚀 AWS deliverable
 
