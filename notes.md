@@ -1,17 +1,19 @@
 # CS 260 Notes
 
-[My startup - Simon](https://simon.cs260.click)
+[My startup - [placeholder] Connect 4 Gaming](https://simon.cs260.click)
 
 ## Helpful links
 
 - [Course instruction](https://github.com/webprogramming260)
+- [Mastery LS Schedule](https://masteryls.com/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e/topic/2680f434-f121-46bd-a858-5fb6d656a3df)
 - [Canvas](https://byu.instructure.com)
+- [Dev Roadmaps](https://roadmap.sh/roadmaps/)
 - [MDN](https://developer.mozilla.org)
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My IP address is: 35.168.247.140
+The command to remote access my web server: ssh -i [key pair file] ubuntu@35.168.247.140
 
 ## Caddy
 
