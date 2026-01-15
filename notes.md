@@ -1,23 +1,27 @@
-# CS 260 Notes
+# cs260-notes
 
 [My startup - [placeholder] Connect 4 Gaming](https://simon.cs260.click)
 
-## Helpful links
+## course-links
 
 - [Course instruction](https://github.com/webprogramming260)
 - [Mastery LS Schedule](https://masteryls.com/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e/topic/2680f434-f121-46bd-a858-5fb6d656a3df)
 - [Canvas](https://byu.instructure.com)
+
+## dev-help
 - [Dev Roadmaps](https://roadmap.sh/roadmaps/)
 - [MDN](https://developer.mozilla.org)
 
 ## AWS
 
 My IP address is: 54.235.103.29
+
 The command to remote access my web server: ssh -i /home/seven-wonders/Documents/startup/7serverkp.pem ubuntu@54.235.103.29
 
 ### Routing Notes 1/15/2026
-HOW DOMAIN NAMES WORK: Search Domain name, computer searches DNS for the appropriate IP address, requests IP address from the server to load the page. Localhost is 127.0.0.1 - it goes to your own computer. An A record is an address record that points to an IP address. This is what is finally returned. CNAME is a record that you stick in the registry that points to a different IP address or domain name. It's an alias that points to an A record that will then finally return the IP address.
-ICANN are the Domain name authorities who lease to Registrars who put domain names in a Registery.
+HOW DOMAIN NAMES WORK: Search Domain name, computer searches DNS for the appropriate IP address, requests IP address from the server to load the page. Localhost is 127.0.0.1 - it goes to your own computer. 
+
+DNS RECORDS: An A record is an address record that points to an IP address. This is what is finally returned. CNAME is a record that you stick in the registry that points to a different IP address or domain name. It's an alias that points to an A record that will then finally return the IP address. ICANN are the Domain name authorities who lease to Registrars who put domain names in a Registery.
 
 ## Caddy
 
