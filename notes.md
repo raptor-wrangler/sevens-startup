@@ -15,6 +15,10 @@
 My IP address is: 35.168.247.140
 The command to remote access my web server: ssh -i [key pair file] ubuntu@35.168.247.140
 
+### Routing Notes 1/15/2026
+HOW DOMAIN NAMES WORK: Search Domain name, computer searches DNS for the appropriate IP address, requests IP address from the server to load the page. Localhost is 127.0.0.1 - it goes to your own computer. An A record is an address record that points to an IP address. This is what is finally returned. CNAME is a record that you stick in the registry that points to a different IP address or domain name. It's an alias that points to an A record that will then finally return the IP address.
+ICANN are the Domain name authorities who lease to Registrars who put domain names in a Registery.
+
 ## Caddy
 
 No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
