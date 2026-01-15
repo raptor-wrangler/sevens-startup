@@ -1,6 +1,6 @@
 # cs260-notes
 
-[My startup - [placeholder] Connect 4 Gaming](https://simon.cs260.click)
+[Connect 4 Gaming](https://startup.seven-wonders.click)
 
 ## course-links
 
@@ -22,10 +22,6 @@ The command to remote access my web server: ssh -i /home/seven-wonders/Documents
 HOW DOMAIN NAMES WORK: Search Domain name, computer searches DNS for the appropriate IP address, requests IP address from the server to load the page. Localhost is 127.0.0.1 - it goes to your own computer. 
 
 DNS RECORDS: An A record is an address record that points to an IP address. This is what is finally returned. CNAME is a record that you stick in the registry that points to a different IP address or domain name. It's an alias that points to an A record that will then finally return the IP address. ICANN are the Domain name authorities who lease to Registrars who put domain names in a Registery.
-
-## Caddy
-
-No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
 
 ## HTML
 
