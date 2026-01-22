@@ -25,47 +25,21 @@ DNS RECORDS: An A record is an address record that points to an IP address. This
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
-
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+- I should've put my notes in here -
 
 ## CSS
 
-This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
+It stands for Cascading Style Sheets! Rules program the vision. You can do inline styling or make a rule. For rules, this is the html element to change all of ->p {color: green}. You can also do a link to another .css file with <link rel="stylesheet" href="styles.css" />. 
 
-Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
+Other selectors exist. There are elements linke p and div, then there's IDs which are specific elements marked with a hashtag- #root marked with id=root. There's classes wich work like IDs for all elements in a specific class - .highlight. Element class selectors which apply to any elements with a specific class. p.highlight would only apply to p elements with class='highlight.' List works by applying this delcaration block to selectors (body, section), descendents do any descendant of the element (body section). Child is a list of direct children (section > p). Pseudo is state-based, so we can change it based of hover (p:hover)
 
-I did like the navbar it made it super easy to build a responsive header.
+Many properties exist, too. There's background-color, border (color, width, style), color, display, font (size, family, style), margin, padding, display (block, inline, or none)
 
-```html
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            <img src="logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
-            Calmer
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="play.html">Play</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-```
+Tp grab a font off the internet: @font-face or @import url(link);
 
-I also used SVG to make the icon and logo for the app. This turned out to be a piece of cake.
+Everything in CSS is a box! Inside is the content (background color) -> padding (background color) -> border (diff color) -> margin (diff color and can specify for all different sides)
+
+I also used SVG to make the icon and logo for the app:
 
 ```html
 <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
