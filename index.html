@@ -24,8 +24,13 @@
         <body> <p> Welcome! Please join your fellow board gamers by logging in. </p> </body>
         <form get="get" action="search.html">
             <div>
-                <span>&#128221</span>
+                <span> This one will only appear when they hit the create button -> &#128221</span>
                 <input type="email" placeholder="Youremail@here.com">
+            </div>
+            <br>
+            <div>
+                <span>&#128221</span>
+                <input type="text" placeholder="Username">
             </div>
             <br>
             <div>
@@ -36,12 +41,7 @@
             <button type="submit">Login</button>
             <button type="submit">Create</button>
         </form>
-        <p> This form will appear only when a user first creates their account. </p>
-        <form get="get" action="search.html">
-            <div>
-                <span>&#128205</span>
-                <input type="text" placeholder="Town, State">
-            </div>
+        <p> Upon login, the browser geolocation API will capture the user's location in a database so it later can be used to find users in a nearby area for the groups page using the native mongoDB geolocation features.</p>
     </main>
 
     <footer>
