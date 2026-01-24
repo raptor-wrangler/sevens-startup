@@ -25,7 +25,7 @@ DNS RECORDS: An A record is an address record that points to an IP address. This
 
 ## HTML
 
-- I should've put my notes in here -
+HTML is easier than I thought it would be. I't just a big tree with many branches. There are plenty of things that I didn't even touch when it comes to html elements, but I want there to be plenty of time to do my CSS.
 
 ## CSS
 
