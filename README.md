@@ -6,7 +6,7 @@ This application allows people to curate lists of their favorite board games and
 
 ## 🚀 Specification Deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following.
 
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
@@ -45,21 +45,23 @@ I am going to use the required technologies in the following ways.
 
 ## 🚀 AWS deliverable
 
+For this deliverable I did the following.
+
 - [x] **Server deployed and accessible with custom domain name** - [My server link](https://seven-wonders.click).
 
 ## 🚀 HTML deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I added 5 different pages: index.html, search.html, favorites.html, groups.html, and about.html
+- [x] **Proper HTML element usage** - I added several different elements. hrefs, p, tables, forms
+- [x] **Links** - I linked to my github page and also got images from the internet
+- [x] **Text** - There's plenty of text on each page
+- [x] **3rd party API placeholder** - I mentioned how this will happen on my index.html page and utilized on groups.html
+- [x] **Images** - I took plenty of images from the internet and also the pfp 2 image in this repository
+- [x] **Login placeholder** - My index.html page has a login placeholder
+- [x] **DB data placeholder** - DB will store login information, favorites for each user, and locations
+- [x] **WebSocket placeholder** - I mentioned on groups.html how the websocket will come into play. I changed my original plan a little bit.
 
 ## 🚀 CSS deliverable
 
