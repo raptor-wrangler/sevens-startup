@@ -59,7 +59,7 @@ For this deliverable I did the following.
 - [x] **Text** - There's plenty of text on each page
 - [x] **3rd party API placeholder** - I mentioned how this will happen on my index.html page and utilized on groups.html
 - [x] **Images** - I took plenty of images from the internet and also the pfp 2 image in this repository
-- [x] **Login placeholder** - My index.html page has a login placeholder
+- [x] **Login placeholder** - My index.html page has a login placeholder, but I didn't know what was meant by 'user name display.' Don't I need my DB working and Javascript to get the webpage to display a user's name. Right now the login is purely visual.
 - [x] **DB data placeholder** - DB will store login information, favorites for each user, and locations
 - [x] **WebSocket placeholder** - I mentioned on groups.html how the websocket will come into play. I changed my original plan a little bit.
 
