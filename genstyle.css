@@ -2,37 +2,59 @@
     font-family:'Buttons';
     src:url('Buttons.ttf');
 }
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-
-header {
-    background-color: #fbf1c7;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-family: 'Buttons', serif;
-    letter-spacing: 2px;
-    font-size: 40px;
-    color: #fbf1c7;
-    text-align: center;
-    margin-top: 10px;
+@font-face {
+    font-family: 'Fredoka';
+    src: url('Fredoka.ttf');
 }
 
 body {
-    background-color: #32302f;
-    font-family: 'Josefin Sans', sans-serif;
-    color: #fbf1c7;
-    margin: 10px;
-    padding: 5px;
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    height: 100vh;
 }
 
-nav menu {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    list-style-type: none;
-    font-size: 20px;
-    background-color: #fbf1c7;
+header {
+    background-color: #cc241d;
+}
+
+    nav menu {
+        background-color: #fbf1c7;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        font-size: 20px;
+        font-family: 'Fredoka', sans-serif;
+    }
+
+    menu li a {
+        background-color: #cc241d;
+        padding: 5px 10px;  
+        color: #fbf1c7;
+        text-decoration: none;
+
+    }
+
+    menu li a:hover {
+        background-color: #fb4934;
+        color: #32302f;
+        text-decoration: none;
+    }
+
+    h1 {
+        font-family: 'Buttons', serif;
+        letter-spacing: 2px;
+        font-size: 45px;
+        color: #fbf1c7;
+        text-align: center;
+        margin: 15px;
+    }
+
+main {
+    background-color: #32302f;
+    font-family: 'Fredoka', sans-serif;
+    color: #fbf1c7;
+    padding: 10px;
 }
 
