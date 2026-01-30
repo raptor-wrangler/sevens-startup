@@ -39,16 +39,12 @@ Tp grab a font off the internet: @font-face or @import url(link);
 
 Everything in CSS is a box! Inside is the content (background color) -> padding (background color) -> border (diff color) -> margin (diff color and can specify for all different sides)
 
-I also used SVG to make the icon and logo for the app:
-
-```html
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" fill="#0066aa" rx="10" ry="10" />
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="72" font-family="Arial" fill="white">C</text>
-</svg>
-```
-
 ## React Part 1: Routing
+
+JAVASCRIPT BASICS - made by Brandon Ikes
+It's an interpreted language. Browsers have an interpreter built in. We will have to install an interpreter on our server. It is dynamically typed!
+
+Node.js allows to run JS outside the browser. V8 is the interpreter in Chrome, someone made it into
 
 Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
 

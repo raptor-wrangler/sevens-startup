@@ -1,0 +1,19 @@
+@font-face {
+    font-family:'Buttons';
+    src:url('Buttons.ttf') format('truetype');
+}
+
+h1 {
+    font-family: 'Buttons', sans-serif;
+    letter-spacing: 2px;
+    font-size: 40px;
+    color: #fbf1c7;
+    text-align: center;
+    margin-top: px;
+}
+body {
+    background-color: #32302f;
+    margin: 0;
+    padding: 0;
+}
+
