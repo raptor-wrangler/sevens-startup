@@ -1,58 +1,51 @@
+* { margin: 0; padding: 0; }
+
 @font-face {
     font-family:'Buttons';
     src:url('Buttons.ttf');
 }
-@font-face {
-    font-family: 'Fredoka';
-    src: url('Fredoka.ttf');
-}
 
 body {
+    background-color: #32302f;
     display:flex;
     flex-direction:column;
-    margin:0;
-    height: 100vh;
 }
 
 header {
     background-color: #cc241d;
 }
+    h1 {
+        font-family: 'Buttons', serif;
+        color: #fbf1c7;
+        margin: 20px;
+        letter-spacing: 2px;
+        font-size: 45px;
+    }
 
     nav menu {
         background-color: #fbf1c7;
-        padding: 10px;
+        font-family: sans-serif;
+        font-size: 18px;
+        padding: 3px;
         display: flex;
-        justify-content: center;
         list-style-type: none;
-        font-size: 20px;
-        font-family: 'Fredoka', sans-serif;
     }
 
     menu li a {
-        background-color: #cc241d;
-        padding: 5px 10px;  
-        color: #fbf1c7;
+        color: #504945;
+        margin-left:18px;
+        padding: 1px 10px;  
         text-decoration: none;
 
     }
 
     menu li a:hover {
-        background-color: #fb4934;
-        color: #32302f;
+        background-color: #504945;
+        color: #fbf1c7;
         text-decoration: none;
     }
 
-    h1 {
-        font-family: 'Buttons', serif;
-        letter-spacing: 2px;
-        font-size: 45px;
-        color: #fbf1c7;
-        text-align: center;
-        margin: 15px;
-    }
-
 main {
-    background-color: #32302f;
     font-family: 'Fredoka', sans-serif;
     color: #fbf1c7;
     padding: 10px;
