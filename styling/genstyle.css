@@ -23,18 +23,20 @@ header {
     }
 
     nav menu {
-        background-color: #fbf1c7;
+        background-color: #ebdbb2;
         font-family: sans-serif;
         font-size: 18px;
         padding: 5px;
-        padding-left: 18px;
+        padding-left: 15px;
         display: flex;
         list-style-type: none;
     }
 
     menu li a {
-        background-color: #ebdbb2;
+        background-color: #fbf1c7;
         color: #504945;
+        border: none;
+        border-radius: 4px;
         margin-left: 3px;
         padding: 1px 10px;  
         text-decoration: none;
@@ -48,8 +50,31 @@ header {
     }
 
 main {
-    font-family: 'Fredoka', sans-serif;
+    font-family: sans-serif;
     color: #fbf1c7;
-    padding: 10px;
+    padding: 18px;
 }
+    h2 {
+        font-family: 'Buttons', serif;
+        letter-spacing: 2px;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
 
+    p, div{
+        font-size: 16px;
+        line-height: 1.4;
+        margin-top: 10px;
+    }
+
+    span {
+        font-style: italic;
+    }
+    input {
+        background-color: #fbf1c7;
+        color: #504945;
+        font-size: 15px;
+        padding: 3px;
+        border: 2px solid #ebdbb2;
+        border-radius: 4px;
+    }
