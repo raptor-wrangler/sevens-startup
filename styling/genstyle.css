@@ -79,3 +79,10 @@ main {
         border: 2px solid #ebdbb2;
         border-radius: 4px;
     }
+
+    img {
+        background-color: #fbf1c7;
+        vertical-align: middle;
+        border-radius: 4px;
+        padding: 3px;
+    }
