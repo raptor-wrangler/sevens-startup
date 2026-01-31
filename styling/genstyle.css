@@ -37,10 +37,11 @@ header {
         color: #504945;
         border: none;
         border-radius: 4px;
-        margin-left: 3px;
+        margin-left: 6px;
+        margin-right: 6px;
         padding: 1px 10px;  
         text-decoration: none;
-
+        transition: background-color 0.2s, color 0.2s;
     }
 
     menu li a:hover {
