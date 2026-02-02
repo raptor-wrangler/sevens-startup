@@ -141,6 +141,14 @@ main {
         transition: background-color 0.2s, color 0.2s;
     }
 
+    #about {
+        display: flex;
+        flex-direction: row;
+        gap:15px;
+        align-items:end;
+        margin-bottom: 10px;
+    }
+
     table {
         display: flex;
         background-color: #504945;
