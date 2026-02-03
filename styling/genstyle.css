@@ -150,24 +150,17 @@ main {
     }
 
     table {
-        display: flex;
+        width: 95%;
+        margin: 1px 8px;;
+        border-collapse: collapse;
         background-color: #504945;
         padding: 8px;
-        border: none;
-        border-radius: 4px;
     } 
     
-    table tr {
-        display: flex;
-        flex-direction:row;
-        justify-content: space-between;
-    }
-    
-    table tr td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1px 8px;
+    tr, td {
+        padding: 9px;
+        border-bottom: 2px solid#ebdbb2;
+        border-top: 2px solid #ebdbb2
     }
 
 footer {
