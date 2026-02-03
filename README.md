@@ -1,4 +1,4 @@
-# Connect 4 Gaming
+# Tabletop Together
 
 [My Notes](notes.md)
 
@@ -16,7 +16,7 @@ For this deliverable I did the following.
 
 ### Elevator pitch
 
-Connect 4 Gaming is like a dating app for people who want to play board games. You can add board games to your favorites list and find other people in the local area who share your interests. This application will set you up on board game dates with others, helping you meet and make new lifelong friends.
+Tabletop Together is like a dating app for people who want to play board games. You can add board games to your favorites list and find other people in the local area who share your interests. This application will set you up on board game dates with others, helping you meet and make new lifelong friends.
 
 ### Design
 
