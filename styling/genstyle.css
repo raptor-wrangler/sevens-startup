@@ -150,11 +150,13 @@ main {
     }
 
     table {
-        width: 95%;
+        width: 99%;
         margin: 1px 0.3%;;
         border-collapse: collapse;
         background-color: #504945;
         padding: 8px;
+        border:none;
+        border-radius: 4px;
     } 
     
     tr, td, th {
@@ -164,16 +166,16 @@ main {
         border-top: 2px solid #665c54;
     }
 
-    tr td:first-child {
+    tr th:first-child, tr td:first-child {
         text-align: left;
         width:125px;
     }
 
-    tr td:nth-child(2) {
+    tr th:nth-child(2), tr td:nth-child(2) {
         text-align:left;
     }
 
-    tr td:last-child {
+    tr th:last-child, tr td:last-child {
         text-align: right;
     }
 
