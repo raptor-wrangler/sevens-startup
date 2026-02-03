@@ -41,10 +41,17 @@ Everything in CSS is a box! Inside is the content (background color) -> padding 
 
 ## React Part 1: Routing
 
-JAVASCRIPT BASICS - made by Brandon Ikes
+JAVASCRIPT BASICS - made by Brandon Ikes (use ===)
 It's an interpreted language. Browsers have an interpreter built in. We will have to install an interpreter on our server. It is dynamically typed!
+Node.js allows to run JS outside the browser. V8 is the interpreter in Chrome, someone made it into the terminal
 
-Node.js allows to run JS outside the browser. V8 is the interpreter in Chrome, someone made it into
+React is just Javascript code. It's what boostrap is for css but for javascript. 2 Main techs in react: JSX (combines html and javascript) and components. IMPORT REACT AT THE TOP OF A JS FILE.
+  JSX: You need a transpiler (babel) which translates the JSX into JS which then is made into HTML and rendered. We will installl Vite which will run our code through Babel. It's purpose is to replace your need to directly interact with the DOM. 
+  COMPONENTS: header, main, footer. It allows you to change just one of these components/reduce redundant code. A component is just a function. It returns JSX (which will then turn to HTML). To inject it into the HTML, you must find the component, put it into a root element and then call render on it. const root = ReactDOM.createRoot(document.querySelector([#id])). It replaces the child of the element but not the element itself.
+  PROPERTIES: basically a parameter that you define in your render call and use in the return of your JSX function. Use curly braces. Destructure a bigger object into something smaller.
+  STATE: react is an event-driven library. It manages variables itself asycnchronously. React.useState([default value])
+  ROUTER: We will have 1 HTML page and inject a differnt HTML page based on interaction. There's only going to be about 10 lines to import JSX and update the code. We will basically componentize all of our HTML. Instead of anchors, use NavLink.
+
 
 Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
 
