@@ -65,14 +65,14 @@ For this deliverable I did the following.
 
 ## 🚀 CSS deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - It think it looks pretty good!
+- [x] **Use of a CSS framework** - I used plenty of CSS everywhere. It might be a bit of a mess...
+- [x] **All visual elements styled using CSS** - Everything's styled!
+- [x] **Responsive to window resizing using flexbox and/or grid display** - I'm pretty sure it looks good with all sizes of viewport. Checked it on my pc and mobil phone.
+- [x] **Use of a imported font** - I downloaded Buttons and used that. I was struggling to get literally ANY other font working...
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used all types of selectors. Some more than others, but I used it all
 
 ## 🚀 React part 1: Routing deliverable
 
