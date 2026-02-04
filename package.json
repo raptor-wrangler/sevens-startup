@@ -1,0 +1,19 @@
+{
+  "name": "tabletop-together",
+  "version": "1.0.0",
+  "description": "sevens 1st website",
+  "homepage": "https://github.com/raptor-wrangler/sevens-startup#readme",
+  "bugs": {
+    "url": "https://github.com/raptor-wrangler/sevens-startup/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raptor-wrangler/sevens-startup.git"
+  },
+  "license": "ISC",
+  "author": "Seven Kautzman",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"tested\""
+  }
+}
