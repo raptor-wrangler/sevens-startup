@@ -4,7 +4,7 @@ export function Login() {
   return (
     <main className="maintext">
       <h2>Login</h2>
-        <body> <p> Welcome! Please join your fellow board gamers by logging in. </p> </body>
+        <p> Welcome! Please join your fellow board gamers by logging in. </p>
         <form get="get" action="search.html">
             <div className="login">
                 <span> <img className='svg' src='../../svgs/letter-svgrepo-com.svg'></img></span>
