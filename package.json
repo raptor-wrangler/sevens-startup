@@ -14,6 +14,13 @@
   "author": "Seven Kautzman",
   "main": "index.js",
   "scripts": {
-    "test": "\"tested\""
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "vite": "^7.3.1"
   }
 }
