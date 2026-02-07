@@ -16,19 +16,19 @@ export default function App() {
             <nav>
                 <menu className='navmenu'>
                     <li>
-                        <img className='svg' src='../public/svgs/home-svgrepo-com.svg'></img>
+                        <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
                         <NavLink to="/login">Login</NavLink>
                     </li>
                     <li>
-                        <img className='svg' src='../public/svgs/minimalistic-magnifer-svgrepo-com.svg'></img>
+                        <img className='svg' src='../svgs/minimalistic-magnifer-svgrepo-com.svg'></img>
                         <NavLink to="/search">Search</NavLink>
                     </li>
                     <li>
-                        <img className='svg' src='../public/svgs/heart-svgrepo-com.svg'></img>
+                        <img className='svg' src='../svgs/heart-svgrepo-com.svg'></img>
                         <NavLink to="/favorites">Favorites</NavLink>
                     </li>
                     <li>
-                        <img className='svg' src='../public/svgs/people-nearby-svgrepo-com.svg'></img> 
+                        <img className='svg' src='../svgs/people-nearby-svgrepo-com.svg'></img> 
                         <NavLink to="/groups">Groups</NavLink>
                     </li>
                 </menu>
@@ -47,11 +47,11 @@ export default function App() {
         <footer className='footer'>
             <p>Made by Seven Kautzman</p>
             <span> 
-                <img className='svg' src="../public/svgs/info-square-svgrepo-com.svg"></img> 
+                <img className='svg' src="../svgs/info-square-svgrepo-com.svg"></img> 
                 <NavLink to="/about"> About </NavLink> 
             </span>
             <span> 
-                <img className='svg' src="../public/svgs/programming-svgrepo-com.svg"></img> 
+                <img className='svg' src="../svgs/programming-svgrepo-com.svg"></img> 
                 <a href="https://github.com/raptor-wrangler/sevens-startup">GitHub</a> 
             </span>
         </footer>
