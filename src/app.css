@@ -6,7 +6,7 @@
 }
 
 
-body {
+.body {
     background-color: #32302f;
     display:flex;
     flex-direction:column;
@@ -14,12 +14,12 @@ body {
     width: 100vw; 
 }
 
-header {
+.header {
     display: flex;
     flex-direction: column;
     background-color: #cc241d;
 }
-    h1 {
+    .h1 {
         font-family: 'Buttons', serif;
         color: #fbf1c7;
         margin: 15px;
@@ -28,7 +28,7 @@ header {
         font-size: 45px;
     }
 
-    nav menu {
+    .navmenu {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -61,7 +61,7 @@ header {
         color: inherit;
     }
 
-main {
+.maintext {
     font-family: sans-serif;
     color: #fbf1c7;
     padding: 18px;
@@ -180,7 +180,12 @@ main {
         text-align: right;
     }
 
-footer {
+    .svg {
+        width: 22px;
+        height: 22px;
+    }
+
+.footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
