@@ -1,0 +1,31 @@
+{
+  "name": "tabletop-together",
+  "version": "1.0.0",
+  "description": "sevens 1st website",
+  "homepage": "https://github.com/raptor-wrangler/sevens-startup#readme",
+  "bugs": {
+    "url": "https://github.com/raptor-wrangler/sevens-startup/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raptor-wrangler/sevens-startup.git"
+  },
+  "license": "ISC",
+  "author": "Seven Kautzman",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.0"
+  }
+}

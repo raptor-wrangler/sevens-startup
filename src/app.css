@@ -2,11 +2,11 @@
 
 @font-face {
     font-family:'Buttons';
-    src:url('Buttons.ttf');
+    src: url('../public/Buttons.ttf');
 }
 
 
-body {
+.body {
     background-color: #32302f;
     display:flex;
     flex-direction:column;
@@ -14,12 +14,12 @@ body {
     width: 100vw; 
 }
 
-header {
+.header {
     display: flex;
     flex-direction: column;
     background-color: #cc241d;
 }
-    h1 {
+    .h1 {
         font-family: 'Buttons', serif;
         color: #fbf1c7;
         margin: 15px;
@@ -28,7 +28,7 @@ header {
         font-size: 45px;
     }
 
-    nav menu {
+    .navmenu {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -61,7 +61,7 @@ header {
         color: inherit;
     }
 
-main {
+.maintext {
     font-family: sans-serif;
     color: #fbf1c7;
     padding: 18px;
@@ -101,6 +101,13 @@ main {
         margin-right: 8px;
         outline: none;
     }
+    
+    .searchform {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        margin-bottom: 18px;
+    }
 
     .login {
         display: flex;
@@ -132,7 +139,8 @@ main {
         color: black;
         border: none;
         border-radius: 4px;
-        padding: 4px 8px;
+        padding: 6px 12px;
+        margin-left: 8px;
         font-size: 16px;
         cursor: pointer;
     }
@@ -146,13 +154,20 @@ main {
         display: flex;
         flex-direction: row;
         gap:15px;
-        align-items:end;
+        align-items: flex-start;
         margin-bottom: 10px;
+    }
+
+    #aboutinfo {
+        background-color:#504945; 
+        padding:1px 8px; 
+        border:none; 
+        border-radius: 4px;
     }
 
     table {
         width: 99%;
-        margin: 1px 0.3%;;
+        margin: 15px 0.3%;;
         border-collapse: collapse;
         background-color: #504945;
         padding: 8px;
@@ -180,7 +195,33 @@ main {
         text-align: right;
     }
 
-footer {
+    #abouttable tr, #abouttable td, #abouttable th {
+        text-align:center;
+        padding: 8px;
+        align-content:center;
+    }
+
+    .svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .pfp {
+        width: 200px;
+        height: 200px;
+        background-color: #fbf1c7; 
+        padding:8px; 
+        border:none; 
+        border-radius:4px;
+    }
+
+    .gameimg {
+        width: 100px; 
+        border:none; 
+        border-radius:4px;
+    }
+
+.footer {
     display: flex;
     flex-direction: row;
     justify-content: center;

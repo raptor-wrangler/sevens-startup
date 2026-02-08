@@ -76,11 +76,11 @@ For this deliverable I did the following.
 
 ## 🚀 React part 1: Routing deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - I successfully installed and deployed both simon and my own startup using Vite. Vite transpiles my jsx properly.
+- [x] **Components** - I've got my headers, footers, and main components that route to different jsx files!
+- [x] **Router** - My router is in my app.jsx file and it successfully routes to all the different jsx pages.
 
 ## 🚀 React part 2: Reactivity deliverable
 
