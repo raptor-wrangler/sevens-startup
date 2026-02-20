@@ -1,9 +1,17 @@
 import React from 'react';
 
-export function Login() {
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
+
+
+export function Login({ userName, authState, onAuthChange }) {
   return (
     <main className="maintext">
-      <h2>Login</h2>
+      {authState !== AuthState.Unknown && <h2>Login</h2>}
+      {authState === AuthState.Authenticated && (
+        navigate('/search')
+      )} 
         <p> Welcome! Please join your fellow board gamers by logging in. </p>
         <form get="get" action="search.html">
             <div className="login">

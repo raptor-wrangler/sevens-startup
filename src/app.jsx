@@ -24,28 +24,40 @@ export default function App() {
                         <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
                         <NavLink to="/login">Login</NavLink>
                     </li>
-                    <li>
-                        <img className='svg' src='../svgs/minimalistic-magnifer-svgrepo-com.svg'></img>
-                        <NavLink to="/search">Search</NavLink>
-                    </li>
-                    <li>
-                        <img className='svg' src='../svgs/heart-svgrepo-com.svg'></img>
-                        <NavLink to="/favorites">Favorites</NavLink>
-                    </li>
-                    <li>
-                        <img className='svg' src='../svgs/people-nearby-svgrepo-com.svg'></img> 
-                        <NavLink to="/groups">Groups</NavLink>
-                    </li>
+                    {authState === AuthState.Authenticated && (
+                        <li>
+                            <img className='svg' src='../svgs/minimalistic-magnifer-svgrepo-com.svg'></img>
+                            <NavLink to="/search">Search</NavLink>
+                        </li>
+                    )}
+                    {authState === AuthState.Authenticated && (
+                        <li>
+                            <img className='svg' src='../svgs/heart-svgrepo-com.svg'></img>
+                            <NavLink to="/favorites">Favorites</NavLink>
+                        </li>
+                    )}
+                    {authState === AuthState.Authenticated && (
+                        <li>
+                            <img className='svg' src='../svgs/people-nearby-svgrepo-com.svg'></img> 
+                            <NavLink to="/groups">Groups</NavLink>
+                        </li>
+                    )}
                 </menu>
             </nav>
         </header>
 
         <Routes>
-            <Route path='/' element={<Login />} exact />
-            <Route path='/login' element={<Login />} exact />
-            <Route path='/search' element={<Search />} />
-            <Route path='/favorites' element={<Favorites />} />
-            <Route path='/groups' element={<Groups />} />
+            <Route path='/' element={<Login
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                    setUserName(userName);
+                    setAuthState(authState);
+                }}/>} 
+            exact />
+            <Route path='/search' element={<Search userName={userName} />} />
+            <Route path='/favorites' element={<Favorites userName={userName} />} />
+            <Route path='/groups' element={<Groups userName={userName} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
