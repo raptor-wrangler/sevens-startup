@@ -150,6 +150,12 @@
         transition: background-color 0.2s, color 0.2s;
     }
 
+    button:disabled {
+        background-color: #bdae93;
+        color: #665c54;
+        cursor: not-allowed;
+    }
+    
     #about {
         display: flex;
         flex-direction: row;

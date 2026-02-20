@@ -7,6 +7,7 @@ import { Favorites } from './favorites/favorites';
 import { Groups } from './groups/groups';
 import { About } from './about/about';
 import { AuthState } from './login/authState';
+import { CreateUser } from './login/createUser';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -20,10 +21,22 @@ export default function App() {
             <h1 className='h1'>Tabletop Together</h1>
             <nav>
                 <menu className='navmenu'>
-                    <li>
-                        <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
-                        <NavLink to="/login">Login</NavLink>
-                    </li>
+                    {authState === AuthState.Authenticated ? (
+                        <li>
+                            <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
+                            <button onClick={() => {
+                                setAuthState(AuthState.Unauthenticated);
+                                setUserName('');
+                                localStorage.removeItem('userName');
+                            }}>Logout
+                            </button>
+                        </li>
+                    ) : (
+                        <li>
+                            <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
+                            <NavLink to="/">Login</NavLink>
+                        </li>
+                    )}
                     {authState === AuthState.Authenticated && (
                         <li>
                             <img className='svg' src='../svgs/minimalistic-magnifer-svgrepo-com.svg'></img>
@@ -60,6 +73,7 @@ export default function App() {
             <Route path='/groups' element={<Groups userName={userName} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
+            <Route path='/createUser' element={<CreateUser/>} />
         </Routes>
 
         <footer className='footer'>
