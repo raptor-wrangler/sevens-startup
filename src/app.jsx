@@ -6,9 +6,14 @@ import { Search } from './search/search';
 import { Favorites } from './favorites/favorites';
 import { Groups } from './groups/groups';
 import { About } from './about/about';
+import { AuthState } from './login/authState';
 
 export default function App() {
-  return (
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
+    return (
     <BrowserRouter>
     <div className = "body">
         <header className='header'>
