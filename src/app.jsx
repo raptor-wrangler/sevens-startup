@@ -7,7 +7,6 @@ import { Favorites } from './favorites/favorites';
 import { Groups } from './groups/groups';
 import { About } from './about/about';
 import { AuthState } from './login/authState';
-import { CreateUser } from './login/createUser';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -73,7 +72,6 @@ export default function App() {
             <Route path='/groups' element={<Groups userName={userName} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
-            <Route path='/createUser' element={<CreateUser/>} />
         </Routes>
 
         <footer className='footer'>
