@@ -12,6 +12,7 @@ export function Search() {
                 <button className="buttonmain" type="submit"> <img className='svg' src="../../svgs/minimalistic-magnifer-svgrepo-com.svg"></img></button>
             </form>
             <table>
+                <tbody>
                 <tr>
                     <td><img className="gameimg" src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__original/img/xV7oisd3RQ8R-k18cdWAYthHXsA=/0x0/filters:format(jpeg)/pic2419375.jpg" alt="Catan" width="100"></img></td>
                     <td>Catan</td>
@@ -27,6 +28,7 @@ export function Search() {
                     <td>Ticket to Ride</td>
                     <td><button className='buttonmain'> <img className='svg' src="../../svgs/heart-svgrepo-com.svg"></img> </button></td>
                 </tr>
+                </tbody>
             </table>
         </div>
     </main>
