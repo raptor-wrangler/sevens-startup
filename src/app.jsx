@@ -24,6 +24,9 @@ export default function App() {
                         <li className="logoutnav">
                             <NavLink onClick={() => {
                                 setAuthState(AuthState.Unauthenticated);
+                                localStorage.removeItem('userName');
+                                localStorage.removeItem('password');
+                                localStorage.removeItem('email');
                             }} to="/">Logout</NavLink>
                         </li>
                     ) : (
