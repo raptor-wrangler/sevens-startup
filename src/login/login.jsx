@@ -16,7 +16,7 @@ export function Login({ userName, authState, onAuthChange }) {
   }, [authState, navigate]);
 
   return (
-    <main className="maintext">
+    <main>
         {authState === AuthState.Unauthenticated && (
           <Unauthenticated
             userName={userName}

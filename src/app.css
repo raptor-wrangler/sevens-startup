@@ -85,7 +85,7 @@
 .maintext {
     font-family: sans-serif;
     color: #fbf1c7;
-    padding: 9px;
+    padding: 18px;
 }
     h2 {
         font-family: 'Buttons', serif;
@@ -141,7 +141,6 @@
         padding: 1px 4px;
 
     }
-
 
     input {
         background-color: #fbf1c7;
