@@ -7,12 +7,6 @@ import { AuthState } from './authState';
 
 export function Login({ userName, authState, onAuthChange }) {
   const navigate = useNavigate();
-  
-  React.useEffect(() => {
-    if (authState === AuthState.Authenticated && userName) {
-      navigate('/search');
-    }
-  }, [authState, navigate]);
 
   return (
     <main>
@@ -21,6 +15,7 @@ export function Login({ userName, authState, onAuthChange }) {
             userName={userName}
             onLogin={(loginUserName) => {
               onAuthChange(loginUserName, AuthState.Authenticated);
+              navigate('/search');
             }}
           />
         )}

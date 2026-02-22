@@ -134,7 +134,7 @@
     .login {
         display: flex;
         flex-direction: row;
-        width: 420px;
+        width: 320px;
         background-color: #fbf1c7;
         border: none;
         border-radius: 4px;
@@ -149,7 +149,7 @@
         border: none;
         margin-left: 8px;
         outline: none;
-        width: 420px;
+        width: 320px;
     }
 
     .rank {
