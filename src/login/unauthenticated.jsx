@@ -21,7 +21,7 @@ export function Unauthenticated(props) {
     if (showRegister) {
         return (
         <main className="maintext">
-            <p>Welcome! Please join your fellow board gamers by creating an account.</p>
+            <h2>Create Account</h2>
             <form get="get" action="search.html">
                 <div className="login">
                     <span> <img className='svg' src='../../svgs/letter-svgrepo-com.svg'></img></span>
@@ -45,6 +45,8 @@ export function Unauthenticated(props) {
     )} else {   
         return (
             <main className="maintext">
+                <h2>Login</h2>
+                <p>Welcome! Please log in to connect with other board gamers.</p>
                 <form get="get" action="search.html">
                     <div className="login">
                         <span> <img className='svg' src='../../svgs/pen-new-square-svgrepo-com.svg'></img></span>

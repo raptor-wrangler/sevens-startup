@@ -21,14 +21,10 @@ export default function App() {
             <nav>
                 <menu className='navmenu'>
                     {authState === AuthState.Authenticated ? (
-                        <li>
-                            <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
-                            <button onClick={() => {
+                        <li className="logoutnav">
+                            <NavLink onClick={() => {
                                 setAuthState(AuthState.Unauthenticated);
-                                setUserName('');
-                                localStorage.removeItem('userName');
-                            }}>Logout
-                            </button>
+                            }} to="/">Logout</NavLink>
                         </li>
                     ) : (
                         <li>

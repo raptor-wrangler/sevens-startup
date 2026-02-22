@@ -11,12 +11,12 @@ export function Login({ userName, authState, onAuthChange }) {
   React.useEffect(() => {
     if (authState === AuthState.Authenticated && userName) {
       navigate('/search');
+
     }
   }, [authState, navigate]);
 
   return (
     <main className="maintext">
-        {authState !== AuthState.Unknown && <h2>Login</h2>}
         {authState === AuthState.Unauthenticated && (
           <Unauthenticated
             userName={userName}
