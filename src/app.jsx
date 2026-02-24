@@ -20,16 +20,7 @@ export default function App() {
             <h1 className='h1'>Tabletop Together</h1>
             <nav>
                 <menu className='navmenu'>
-                    {authState === AuthState.Authenticated ? (
-                        <li className="logoutnav">
-                            <NavLink onClick={() => {
-                                setAuthState(AuthState.Unauthenticated);
-                                localStorage.removeItem('userName');
-                                localStorage.removeItem('password');
-                                localStorage.removeItem('email');
-                            }} to="/">Logout</NavLink>
-                        </li>
-                    ) : (
+                    {authState === AuthState.Unauthenticated && (
                         <li>
                             <img className='svg' src='../svgs/home-svgrepo-com.svg'></img>
                             <NavLink to="/">Login</NavLink>
@@ -51,6 +42,16 @@ export default function App() {
                         <li>
                             <img className='svg' src='../svgs/people-nearby-svgrepo-com.svg'></img> 
                             <NavLink to="/groups">Groups</NavLink>
+                        </li>
+                    )}
+                    {authState === AuthState.Authenticated && (
+                        <li className="logoutnav">
+                            <img className='svg' src='../svgs/logout-2-svgrepo-com.svg'></img> 
+                            <NavLink onClick={() => {
+                                setAuthState(AuthState.Unauthenticated);
+                                localStorage.removeItem('userName');
+                                localStorage.removeItem('email');
+                            }} to="/">Logout</NavLink>
                         </li>
                     )}
                 </menu>

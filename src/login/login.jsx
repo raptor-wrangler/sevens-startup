@@ -8,6 +8,12 @@ import { AuthState } from './authState';
 export function Login({ userName, authState, onAuthChange }) {
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    if (authState === AuthState.Authenticated) {
+      navigate('/search');
+    }
+  }, [authState, navigate]);
+
   return (
     <main>
         {authState === AuthState.Unauthenticated && (
