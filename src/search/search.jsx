@@ -5,13 +5,14 @@ export function Search() {
   const [listLength, setListLength] = React.useState(20);
   const [lastLength, setLastLength] = React.useState(0);
   const [search, setSearch] = React.useState('');
-
+  
   async function populateGames() {
     try {
       const response = await fetch('/games.json');
       const gamesList = await response.json();
-      setGames(gamesList.slice(lastLength, listLength));
-      setLastLength(listLength-1);
+      const newGames = gamesList.slice(lastLength, listLength);
+      setGames(prevGames => [...prevGames, ...newGames]);
+      setLastLength(listLength);
     } catch (error) {
       console.error('Error loading games:', error);
     }
@@ -36,7 +37,7 @@ export function Search() {
                     <tr key={index}>
                         <td><img className="gameimg" src={game.ImagePath} alt={game.Name} width="100"></img></td>
                         <td>{game.Name}</td>
-                        <td><button className='buttonmain'> <img className='svg' src="../../svgs/heart-svgrepo-com.svg"></img> </button></td>
+                        <td><button className='buttonmain'><img className='svg' src="../../svgs/heart-svgrepo-com.svg"></img></button></td>
                         </tr>
                     ))}
                 </tbody>
