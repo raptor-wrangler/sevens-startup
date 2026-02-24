@@ -3,13 +3,14 @@ import React from 'react';
 export function Search() {
   const [games, setGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
-  const [lastLength, setLastLength] = React.useState(20);
+  const [lastLength, setLastLength] = React.useState(0);
 
   async function populateGames() {
     try {
       const response = await fetch('/games.json');
       const gamesList = await response.json();
-      setGames(gamesList.slice(0, listLength));
+      setGames(gamesList.slice(lastLength, listLength));
+      setLastLength(listLength);
     } catch (error) {
       console.error('Error loading games:', error);
     }
