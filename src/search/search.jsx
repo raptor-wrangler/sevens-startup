@@ -4,40 +4,50 @@ export function Search() {
   const [games, setGames] = React.useState([]);
   const [displayedGames, setDisplayedGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
-  const [search, setSearch] = React.useState('');
-  
+  const [search, setSearch] = React.useState("");
+  const [input, setInput] = React.useState("");
+
   async function populateGames() {
     try {
       const response = await fetch('/games.json');
       const gamesList = await response.json();
       setGames(gamesList);
-      setDisplayedGames(gamesList.slice(0, listLength));
     } catch (error) {
       console.error('Error loading games:', error);
     }
   }
 
   React.useEffect(() => {
-    const display = games.slice(0, listLength);
-    setDisplayedGames(display);
-  }, [listLength]);
-
-  React.useEffect(() => {
     populateGames();
   }, []);
+
+  React.useEffect(() => {
+    if (search === "") {
+      setDisplayedGames(games.slice(0, listLength));
+    } else {
+      const filtered = games.filter(game =>
+        game.Name.toLowerCase().includes(search.toLowerCase())
+      );
+      setDisplayedGames(filtered);
+    }
+  }, [search, games, listLength]);
 
   return (
     <main className="maintext">
       <div>
         <h2>Search</h2>
         <h3>Hello, {localStorage.getItem('userName')}</h3>
-            <p>Find games to add to your favorites!</p>
-            <form className="searchform" action="search.html" method="get">
-                <input className="search" type="text" name="query" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)}></input>
-                <button className="buttonmain" onClick={() => setSearch(search)}><img className='svg' src="../../svgs/minimalistic-magnifer-svgrepo-com.svg"></img></button>
-            </form>
-            <table>
-                <tbody>
+        <p>Find games to add to your favorites!</p>
+        <form className="searchform" action="search.html" method="get"
+            onSubmit={e => {e.preventDefault(); setSearch(input)}}>
+          <input className="search" type="text" name="query" placeholder="Search..." value={input}
+            onChange={e => setInput(e.target.value)}/>
+          <button className="buttonmain" type="submit">
+            <img className='svg' src="../../svgs/minimalistic-magnifer-svgrepo-com.svg" />
+          </button>
+        </form>
+        <table>
+          <tbody>
                   {displayedGames.map((displayedGames, index) => (
                     <tr key={index}>
                         <td><img className="gameimg" src={displayedGames.ImagePath} alt={displayedGames.Name} width="100"></img></td>
