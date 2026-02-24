@@ -2,25 +2,29 @@ import React from 'react';
 
 export function Search() {
   const [games, setGames] = React.useState([]);
+  const [displayedGames, setDisplayedGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
-  const [lastLength, setLastLength] = React.useState(0);
   const [search, setSearch] = React.useState('');
   
   async function populateGames() {
     try {
       const response = await fetch('/games.json');
       const gamesList = await response.json();
-      const newGames = gamesList.slice(lastLength, listLength);
-      setGames(prevGames => [...prevGames, ...newGames]);
-      setLastLength(listLength);
+      setGames(gamesList);
+      setDisplayedGames(gamesList.slice(0, listLength));
     } catch (error) {
       console.error('Error loading games:', error);
     }
   }
 
   React.useEffect(() => {
-    populateGames();
+    const display = games.slice(0, listLength);
+    setDisplayedGames(display);
   }, [listLength]);
+
+  React.useEffect(() => {
+    populateGames();
+  }, []);
 
   return (
     <main className="maintext">
@@ -29,20 +33,23 @@ export function Search() {
         <h3>Hello, {localStorage.getItem('userName')}</h3>
             <p>Find games to add to your favorites!</p>
             <form className="searchform" action="search.html" method="get">
-                <input className="search" type="text" name="query" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}></input>
+                <input className="search" type="text" name="query" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)}></input>
+                <button className="buttonmain" onClick={() => setSearch(search)}><img className='svg' src="../../svgs/minimalistic-magnifer-svgrepo-com.svg"></img></button>
             </form>
             <table>
                 <tbody>
-                  {games.filter(game => game.Name.includes(search)).map((game, index) => (
+                  {displayedGames.map((displayedGames, index) => (
                     <tr key={index}>
-                        <td><img className="gameimg" src={game.ImagePath} alt={game.Name} width="100"></img></td>
-                        <td>{game.Name}</td>
+                        <td><img className="gameimg" src={displayedGames.ImagePath} alt={displayedGames.Name} width="100"></img></td>
+                        <td>{displayedGames.Name}</td>
                         <td><button className='buttonmain'><img className='svg' src="../../svgs/heart-svgrepo-com.svg"></img></button></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <button className='buttonmain' onClick={() => setListLength(listLength + 20)}>Load More</button>
+            <button className='buttonmain' onClick={() => {
+              setListLength(listLength + 20);
+            }}>Load More</button>
         </div>
     </main>
   );
