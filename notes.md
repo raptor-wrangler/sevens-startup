@@ -56,3 +56,52 @@ React is just Javascript code. It's what boostrap is for css but for javascript.
 Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
 
 ## React Part 2: Reactivity
+
+
+## Service
+It's up to the service to send whatever you're requesting. We don't get to control the results. These calls are called endpoints. You declare what the endpoint does, and what parameters it takes. In the HTTP protectol, the address is paired with a verb which is like a command. [post]-creation [get]-getting some information.
+
+Your service can call other services like databases with the fetch command. Servers have to be asked to do something. It doesn't work otherwise. We use the promises so that it's async and things can still work while the server tries to fetch it.
+
+``` jsx
+fetch(url) {options} //this promises to get you a response object
+  .then(r => r.json()) //this is needed because fetch is just a promise that it will return once it's been fetched. This is only information about the request - the response object. the .json() also returns a promise. r is just a variable
+  .then(j => console.log(j)) //j is just a variable - this finally shows the stuff we got
+```
+OR
+``` jsx
+const r = await fetch(url) //this just looks nicer and is a little easier to debug.
+const j = await r.json()
+console.log(j)
+```
+
+https://byu.edu:443/api/city?q=pro#3
+SCHEME: https
+DOMAIN: byu.edu
+PORT: 443
+PATH: /api/city
+PARAMETERS: ?q=pro (query that searches for and city that contains 'pro')
+ANCHOR: #3
+
+Ports are like ship docking. You connect with one port but it will transfer you to a different port so you can dock as well as so many other people. We use Caddy in order to forward our subdomain navigation to ports. This is called a reverese proxy. That's what our websites do!
+
+SPECIFIC PROTOCOLS: THIS IS SUPER COOL! 20 - file transfer protocol | 22 - SSH | 2 - mail
+
+Requests:
+POST /user HTTP/1.1
+Host: cs260.click
+User-Agent: curl/7.77.0
+Content-Length: 14
+Accept: application/json, text/plain, */*
+accept-encoding: gzip, deflate
+{"name":"Tim"}
+
+Responses:
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 15
+Content-Encoding: gzip
+{"id":"12", "name":"tim"}
+
+CACHING
+Keeping something you've learned before and holding onto it.
