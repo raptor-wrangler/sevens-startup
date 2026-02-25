@@ -52,6 +52,7 @@ export default function App() {
                                 setAuthState(AuthState.Unauthenticated);
                                 localStorage.removeItem('userName');
                                 localStorage.removeItem('email');
+                                localStorage.removeItem('favorites');
                             }} to="/">Logout</NavLink>
                         </li>
                     )}
