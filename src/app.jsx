@@ -12,7 +12,7 @@ export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
-    const [favorites, setFavorites] = React.useState([]);
+    const [favoriteslist, setFavoriteslList] = React.useState(localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []);
 
     return (
     <BrowserRouter>
@@ -68,9 +68,9 @@ export default function App() {
                     setAuthState(authState);
                 }}/>} 
             exact />
-            <Route path='/search' element={<Search userName={userName} favorites={favorites} setFavorites={setFavorites}/>} />
-            <Route path='/favorites' element={<Favorites userName={userName} favorites={favorites} setFavorites={setFavorites}/>} />
-            <Route path='/groups' element={<Groups userName={userName} favorites={favorites}/>} />
+            <Route path='/search' element={<Search userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList}/>} />
+            <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList}/>} />
+            <Route path='/groups' element={<Groups userName={userName} favoritesList={favoriteslist}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
         </Routes>

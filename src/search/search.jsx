@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Search({userName, favorites, setFavorites}) {
+export function Search({userName, favoritesList, setFavoritesList}) {
   const [games, setGames] = React.useState([]);
   const [displayedGames, setDisplayedGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
@@ -11,6 +11,16 @@ export function Search({userName, favorites, setFavorites}) {
     const response = await fetch('/games.json'); //my hope is that I can use a third party call for this later
     const gamesList = await response.json();
     setGames(gamesList);
+  }
+
+  async function storeFavorites(game) {
+    setFavoritesList(favoritesList.concat(game));
+    localStorage.setItem('favorites', JSON.stringify(favoritesList.concat(game)));
+  }
+
+  async function removeFavorite(game) {
+    setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
+    localStorage.setItem('favorites', JSON.stringify(favoritesList.filter(fav => fav.Name !== game.Name)));
   }
 
   React.useEffect(() => {
@@ -35,7 +45,7 @@ export function Search({userName, favorites, setFavorites}) {
         <h3>Hello, {userName}</h3>
         <p>Find games to add to your favorites!</p>
         <form className="searchform" action="search.html" method="get"
-            onSubmit={e => {e.preventDefault(); setSearch(input)}}>
+            onSubmit={e => {e.preventDefault(); setSearch(input); setListLength(20);}}>
           <input className="search" type="text" name="query" placeholder="Search..." value={input}
             onChange={e => setInput(e.target.value)}/>
           <button className="buttonmain" type="submit">
@@ -50,18 +60,18 @@ export function Search({userName, favorites, setFavorites}) {
                   <td>{displayedGames.Name}</td>
                   <td><button className='buttonheart'
                     onClick= {() => {
-                      if (!favorites.some(game => game.Name === displayedGames.Name)) {
-                        setFavorites(favorites.concat(displayedGames));
+                      if (!favoritesList.some(game => game.Name === displayedGames.Name)) {;
+                        storeFavorites(displayedGames);
                       } else {
-                        setFavorites(favorites.filter(game => game.Name !== displayedGames.Name));
+                        removeFavorite(displayedGames);
                       }
                     }}>
                     <img
                       className='svg'
-                      src={favorites.some(fav => fav.Name === displayedGames.Name)
+                      src={favoritesList.some(fav => fav.Name === displayedGames.Name)
                         ? '../../svgs/heart-filled-svgrepo-com.svg'
                         : '../../svgs/heart-svgrepo-com.svg'}
-                      alt={favorites.some(fav => fav.Name === displayedGames.Name) ? 'Favorited' : 'Add to favorites'}
+                      alt={favoritesList.some(fav => fav.Name === displayedGames.Name) ? 'Favorited' : 'Add to favorites'}
                     />
                     </button>
                   </td>
