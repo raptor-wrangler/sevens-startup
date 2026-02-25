@@ -34,10 +34,12 @@ export function Search({userName, favoritesList, setFavoritesList}) {
       const filtered = games.filter(game =>
         game.Name.toLowerCase().includes(search.toLowerCase())
       );
-      setDisplayedGames(filtered);
+      setDisplayedGames(filtered.slice(0, listLength));
     }
   }, [search, games, listLength]);
 
+  console.log(displayedGames.length);
+  console.log(listLength);
   return (
     <main className="maintext">
       <div>
@@ -56,7 +58,9 @@ export function Search({userName, favoritesList, setFavoritesList}) {
           <tbody>
             {displayedGames.map((displayedGames, index) => (
               <tr key={index}>
-                  <td><img className="gameimg" src={displayedGames.ImagePath} alt={displayedGames.Name} width="100"></img></td>
+                  <td>{displayedGames.ImagePath ? 
+                    <img className="gameimg" src={displayedGames.ImagePath} alt={displayedGames.Name} width="100"></img> 
+                    : <div>No Image</div>}</td>
                   <td>{displayedGames.Name}</td>
                   <td><button className='buttonheart'
                     onClick= {() => {
@@ -79,9 +83,13 @@ export function Search({userName, favoritesList, setFavoritesList}) {
               ))}
           </tbody>
         </table>
-        <button className='buttonmain' onClick={() => {
-          setListLength(listLength + 20);
-        }}>Load More</button>
+        {listLength-1 < displayedGames.length ? (
+          <button className='buttonmain' onClick={() => {
+            setListLength(listLength + 20);
+          }}>Load More</button>
+        ) : (
+          <div></div>
+        )}
         </div>
     </main>
   );

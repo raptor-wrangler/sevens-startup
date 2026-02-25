@@ -1,21 +1,34 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Favorites({userName, favoritesList, setFavoritesList}) {
+  const navigate = useNavigate();
+
+  async function removeFavorite(game) {
+    setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
+    localStorage.setItem('favorites', JSON.stringify(favoritesList.filter(fav => fav.Name !== game.Name)));
+  }
+    
     return (
     <main className="maintext">
       <div>
         <h2> Favorites </h2>
         <h3>Hello, {userName}</h3>
-        <p> Here are your favorite games! </p>
+            {favoritesList.length === 0 ? (
+                <div>
+                    <p>You have no favorite games yet. Go to the search page to add some!</p>
+                    <button className='buttonmain' onClick={() => navigate('/search')}>Search</button>
+                </div>
+            ) : (
             <table>
                 <tbody>
-                    {favoritesList.length !== 0 && favoritesList.map((favoritesList, index) => (
+                    {favoritesList.map((favoritesList, index) => (
                     <tr key={index}>
                         <td><img className="gameimg" src={favoritesList.ImagePath} alt={favoritesList.Name} width="100"></img></td>
                         <td>{favoritesList.Name}</td>
                         <td><button className='buttonmain'
                             onClick= {() => {
-                                setFavoritesList(favoritesList.filter(game => game.Name !== favoritesList.Name));
+                                removeFavorite(favoritesList);
                             }}>
                             <img className='svg' src="../../svgs/trash-bin-minimalistic-svgrepo-com.svg"/>
                             </button>
@@ -42,6 +55,7 @@ export function Favorites({userName, favoritesList, setFavoritesList}) {
                 </tr> */}
                 </tbody>
             </table>
+            )}
         </div>
     </main>
   );
