@@ -14,8 +14,9 @@ export function Search({userName, favoritesList, setFavoritesList}) {
   }
 
   async function storeFavorites(game) {
-    setFavoritesList(favoritesList.concat(game));
-    localStorage.setItem('favorites', JSON.stringify(favoritesList.concat(game)));
+    const newList = favoritesList.concat(game).map((fav, index) => ({ ...fav, Rank: index + 1 }));
+    setFavoritesList(newList);
+    localStorage.setItem('favorites', JSON.stringify(newList));
   }
 
   async function removeFavorite(game) {
@@ -38,8 +39,6 @@ export function Search({userName, favoritesList, setFavoritesList}) {
     }
   }, [search, games, listLength]);
 
-  console.log(displayedGames.length);
-  console.log(listLength);
   return (
     <main className="maintext">
       <div>
