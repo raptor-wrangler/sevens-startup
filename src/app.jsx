@@ -50,9 +50,6 @@ export default function App() {
                             <img className='svg' src='../svgs/logout-2-svgrepo-com.svg'></img> 
                             <NavLink onClick={() => {
                                 setAuthState(AuthState.Unauthenticated);
-                                localStorage.removeItem('userName');
-                                localStorage.removeItem('email');
-                                localStorage.removeItem('favorites');
                             }} to="/">Logout</NavLink>
                         </li>
                     )}
