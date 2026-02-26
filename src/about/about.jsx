@@ -14,16 +14,20 @@ export function About() {
             </section>
         </section>
         <table id="abouttable">
+          <tbody>
             <tr>
                 <th>Dungeons & Dragons</th>
                 <th>Seven Wonders</th>
                 <th>Catan</th>
                 <th>Skull King</th>
             </tr>
+            <tr>
                 <td><img className='gameimg' src="https://cf.geekdo-images.com/7Tfq6Jeik9PON46j1bqrew__original/img/MSbRO0k8_GW94CN78XnAs1lU8OI=/0x0/filters:format(png)/pic4222497.png" alt="Dungeons & Dragons"></img></td>
                 <td><img className='gameimg' src="https://cf.geekdo-images.com/fwzG7OfzA35y7b3S7dHn9Q__original/img/HGwgC5DOPmEksHYUKNiF38dKUog=/0x0/filters:format(jpeg)/pic5652537.jpg"alt="Seven Wonders"></img></td>
                 <td><img className='gameimg' src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__original/img/xV7oisd3RQ8R-k18cdWAYthHXsA=/0x0/filters:format(jpeg)/pic2419375.jpg" alt="Catan"></img></td>
                 <td><img className='gameimg' src="https://cf.geekdo-images.com/jiL3MIGH_w3g6El3OHVVig__original/img/JlMGgWGzFWmqz4s5DMLpPuHMUzg=/0x0/filters:format(png)/pic6137456.png" alt="Skull King Game"></img></td>
+            </tr>
+          </tbody>
         </table>
         </div>
     </main>

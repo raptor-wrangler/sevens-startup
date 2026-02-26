@@ -15,7 +15,7 @@ export function Search({userName, favoritesList, setFavoritesList}) {
 
   async function storeFavorites(game) {;
     setFavoritesList(favoritesList.concat(game));
-    localStorage.setItem('favorites', JSON.stringify(newList));
+    localStorage.setItem('favorites', JSON.stringify(favoritesList.concat(game)));
   }
 
   async function removeFavorite(game) {
