@@ -255,6 +255,10 @@
         text-align: right;
     }
 
+    .tablebutton {
+        width: 50px
+    }
+
     #abouttable tr, #abouttable td, #abouttable th {
         text-align:center;
         padding: 8px;

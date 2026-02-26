@@ -26,7 +26,12 @@ export function Favorites({userName, favoritesList, setFavoritesList}) {
                     <tr key={index}>
                         <td><img className="gameimg" src={favoritesList.ImagePath} alt={favoritesList.Name} width="100"></img></td>
                         <td>{favoritesList.Name}</td>
-                        <td><button className='buttonmain'
+                        <td className="tablebutton"><button className='buttonmain' onClick={() => {
+                            navigate('/chat');
+                            }}>
+                            <img className='svg' src="../../svgs/chat-line-svgrepo-com.svg"></img>
+                            </button></td>
+                        <td className="tablebutton"><button className='buttonmain'
                             onClick= {() => {
                                 removeFavorite(favoritesList);
                             }}>

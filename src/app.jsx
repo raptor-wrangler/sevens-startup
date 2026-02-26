@@ -4,7 +4,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Search } from './search/search';
 import { Favorites } from './favorites/favorites';
-import { Groups } from './groups/groups';
+import { Chat } from './chat/chat';
 import { About } from './about/about';
 import { AuthState } from './login/authState';
 
@@ -41,8 +41,8 @@ export default function App() {
                     )}
                     {authState === AuthState.Authenticated && (
                         <li>
-                            <img className='svg' src='../svgs/people-nearby-svgrepo-com.svg'></img> 
-                            <NavLink to="/groups">Groups</NavLink>
+                            <img className='svg' src='../svgs/chat-line-svgrepo-com.svg'></img> 
+                            <NavLink to="/chat">Chat</NavLink>
                         </li>
                     )}
                     {authState === AuthState.Authenticated && (
@@ -68,7 +68,7 @@ export default function App() {
             exact />
             <Route path='/search' element={<Search userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList}/>} />
             <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList}/>} />
-            <Route path='/groups' element={<Groups userName={userName} favoritesList={favoriteslist}/>} />
+            <Route path='/chat' element={<Chat userName={userName}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
