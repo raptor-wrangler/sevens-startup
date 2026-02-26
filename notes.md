@@ -105,3 +105,6 @@ Content-Encoding: gzip
 
 CACHING
 Keeping something you've learned before and holding onto it.
+
+WEB SERVICES
+Service design: make a uml sequence diagram to see where the server is needed. This will help us determine the method and endpoint he has. Will need login, logout, create account endpoints for sure. 
