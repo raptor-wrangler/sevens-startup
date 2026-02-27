@@ -86,8 +86,8 @@ For this deliverable I did the following.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I DID IT. I had to gut and rebuild one of my pages, the group page, in order to add a websocket placeholder chat page. There is still more to be done, but it is mocked out! Search and favorites and the login system have been figured out too.
+- [x] **Hooks** - There are several usestate and useeffect hooks on most pages
 
 ## 🚀 Service deliverable
 
