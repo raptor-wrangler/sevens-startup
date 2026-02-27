@@ -14,6 +14,7 @@
 }
 
 .header {
+    position:fixed;
     display: flex;
     flex-direction: column;
     background-color: #cc241d;
@@ -75,6 +76,7 @@
     font-family: sans-serif;
     color: #fbf1c7;
     padding: 18px;
+    margin-top: 150px;
 }
     h2 {
         font-family: 'Buttons', serif;
@@ -285,6 +287,65 @@
         border-radius:4px;
     }
 
+    .messageslist {
+        display:flex;
+        flex-direction:column;
+        background-color: #3c3836;
+        padding: 10px 10px;
+        border:none;
+        border-radius:4px;
+        margin-top: 10px;
+        margin-bottom:80px;
+    }
+
+    .messagerow {
+        display: flex;
+        flex-direction: column;
+        padding: 4px 10px;
+        width: 70vw;
+        word-break: break-word;
+    }
+
+    .messageme {
+        font-family: "buttons", sans-serif;
+        font-size: 20px;
+        color:#cc241d
+    }
+
+    .messageother {
+        font-family: "buttons", sans-serif;
+        font-size: 20px;
+        color:#458588;
+    }
+    
+    .messagedate {
+        color: #7c6f64;
+        font-size: 12px
+    }
+
+    .chatinput {
+        width: 400px;
+        background-color: #fbf1c7;
+        border: none;
+        border-radius: 4px;
+        padding: 1px 4px; 
+        word-break:break-word;
+    }
+
+    .chatform {
+        position:fixed;
+        bottom:38px;
+        left:5px;
+        right:5px;
+        display: flex;
+        flex-direction: row;
+        background-color: #fbf1c7;
+        border: none;
+        border-radius: 4px;
+        padding: 1px 4px; 
+        box-shadow: 1px 2px 2px 2px black;
+    }
+
 .footer {
     display: flex;
     flex-direction: row;
@@ -297,6 +358,10 @@
     text-align: center;
     padding: 4px;
     margin-top: auto;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
 }
     footer span {
         display: flex;
