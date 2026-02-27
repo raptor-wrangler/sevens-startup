@@ -46,29 +46,18 @@ export function Chat({userName}) {
         hour: "2-digit",
         minute: "2-digit"
       })}
-      const newMessage = messages.concat(message);
-      setMessages(newMessage);
-      localStorage.setItem('messages', JSON.stringify(newMessage));
+      setMessages(prevMessages => {
+        const newMessages = prevMessages.concat(message);
+        localStorage.setItem('messages', JSON.stringify(newMessages));
+        return newMessages;
+      });
   };
-
-  //   setInterval(() => {
-  //   // This will be replaced with WebSocket messages
-  //   const userName = `User-${Math.floor(Math.random() * 100)}`;
-  //   const message = {
-  //     name: userName,
-  //     text: `Hello from ${userName}`,
-  //     date: new Date().toLocaleString("en-US", {
-  //       month: "short",
-  //       day: "numeric",
-  //       year: "numeric",
-  //       hour: "2-digit",
-  //       minute: "2-digit"
-  //     })
-  //   };
-  //   const newMessage = messages.concat(message);
-  //   setMessages(newMessage);
-  //   localStorage.setItem('messages', JSON.stringify(newMessage));
-  // }, 30000);
+React.useEffect(() => {
+  const interval = setInterval(() => {
+    addMessage();
+  }, 15000);
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <main className="maintext">
@@ -88,9 +77,11 @@ export function Chat({userName}) {
               minute: "2-digit"
             })
           };
-          const newMessages = messages.concat(message);
-          setMessages(newMessages);
-          localStorage.setItem('messages', JSON.stringify(newMessages));
+          setMessages(prevMessages => {
+            const newMessages = prevMessages.concat(message);
+            localStorage.setItem('messages', JSON.stringify(newMessages));
+            return newMessages;
+          });
           e.target.reset();
         }} className='chatform'>
           <input className="chatinput" type="text" name="message" placeholder="Type your message here..." required />
