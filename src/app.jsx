@@ -49,7 +49,7 @@ export default function App() {
                         <li className="logoutnav">
                             <img className='svg' src='../svgs/logout-2-svgrepo-com.svg'></img> 
                             <NavLink onClick={() => {
-                                setAuthState(AuthState.Unauthenticated);
+                                logout();
                             }} to="/">Logout</NavLink>
                         </li>
                     )}
@@ -92,3 +92,16 @@ export default function App() {
 function NotFound() {
   return <main className="maintext">404: Return to sender. Address unknown.</main>;
 }
+
+function logout() {
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        onAuthChange(userName, AuthState.Unauthenticated);
+      });
+  }
