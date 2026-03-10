@@ -108,3 +108,15 @@ Keeping something you've learned before and holding onto it.
 
 WEB SERVICES
 Service design: make a uml sequence diagram to see where the server is needed. This will help us determine the method and endpoint he has. Will need login, logout, create account endpoints for sure. 
+
+Authentication: I know who you are
+Authorization: I know what you can do
+SECURELY STORING PASSWORDS
+ - must encrypt the password so that not even YOU know their password. Use a cryptographic hash function that you cannot reverse. You'll remember the hash, but never remember the actual password. Salts make everything unique even if the password is the same.
+ - We will use Bcrypt, import it, and then call 2 functions with it.
+
+ AUTHENTICATION TOKENS
+ - use uuid package to generate almost unique token. 
+ - use cookies Set-Cookie, give it a key, and then pass the new uuid we got. Then you can put a whole bunch of parameters on it. You can set the cookie to expire and it would force the user to login again!
+ - every request looks at the token
+ - import npm package cooke-parser
