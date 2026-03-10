@@ -64,7 +64,7 @@ app.put('/api/auth', async (req, res) => {
     res.send({ username: user.username });
     return;
   }
-    res.status(401).send({ msg: 'Unauthorized' });
+    res.status(401).send({ msg: 'Account not found' });
   });
 
 // Logout endpoint  !!!

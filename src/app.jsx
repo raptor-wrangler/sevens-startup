@@ -50,6 +50,7 @@ export default function App() {
                             <img className='svg' src='../svgs/logout-2-svgrepo-com.svg'></img> 
                             <NavLink onClick={() => {
                                 logout();
+                                setAuthState(AuthState.Unauthenticated);
                             }} to="/">Logout</NavLink>
                         </li>
                     )}
@@ -94,7 +95,7 @@ function NotFound() {
 }
 
 function logout() {
-    fetch(`/api/auth/logout`, {
+    fetch(`/api/auth`, {
       method: 'delete',
     })
       .catch(() => {
@@ -102,6 +103,5 @@ function logout() {
       })
       .finally(() => {
         localStorage.removeItem('userName');
-        onAuthChange(userName, AuthState.Unauthenticated);
       });
   }
