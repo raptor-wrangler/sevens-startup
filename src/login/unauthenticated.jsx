@@ -6,29 +6,38 @@ export function Unauthenticated(props) {
     const [showRegister, setShowRegister] = React.useState(false);
 
     async function loginUser() {
-        loginOrCreate(`/api/auth/login`);
+        const response = await fetch('/api/auth', {
+            method: 'put',
+            body: JSON.stringify({ username: userName, password: password }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('userName', userName);
+            props.onLogin(userName);
+        } else {
+            const body = await response.json();
+            setDisplayError(`⚠ Error: ${body.msg}`);
+        }
     }
 
     async function createUser() {
-        loginOrCreate(`/api/auth/create`);
+        const response = await fetch('/api/auth', {
+            method: 'post',
+            body: JSON.stringify({ username: userName, password: password }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('userName', userName);
+            props.onLogin(userName);
+        } else {
+            const body = await response.json();
+            setDisplayError(`⚠ Error: ${body.msg}`);
+        }
     }
-
-    async function loginOrCreate(endpoint) {
-    const response = await fetch(endpoint, {
-      method: 'post',
-      body: JSON.stringify({ username: userName, password: password }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    if (response?.status === 200) {
-      localStorage.setItem('userName', userName);
-      props.onLogin(userName);
-    } else {
-      const body = await response.json();
-      setDisplayError(`⚠ Error: ${body.msg}`);
-    }
-  }
 
     if (showRegister) {
         return (

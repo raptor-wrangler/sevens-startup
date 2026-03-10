@@ -19,13 +19,8 @@ export function Login({ userName, authState, onAuthChange }) {
         {authState === AuthState.Unauthenticated && (
           <Unauthenticated
             userName={userName}
-            onLogin={(loginUserName, loginPassword) => {
-              if (localStorage.getItem('userName') === loginUserName && localStorage.getItem('password') === loginPassword) {
-                onAuthChange(loginUserName, AuthState.Authenticated);
-              } else {
-                alert("Incorrect username or password");
-                return;
-              }
+            onLogin={(loginUserName) => {
+              onAuthChange(loginUserName, AuthState.Authenticated);
             }}
           />
         )}
