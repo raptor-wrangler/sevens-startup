@@ -56,7 +56,7 @@ React is just Javascript code. It's what boostrap is for css but for javascript.
 Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
 
 ## React Part 2: Reactivity
-
+i lost my notes :(
 
 ## Service
 It's up to the service to send whatever you're requesting. We don't get to control the results. These calls are called endpoints. You declare what the endpoint does, and what parameters it takes. In the HTTP protectol, the address is paired with a verb which is like a command. [post]-creation [get]-getting some information.
@@ -120,3 +120,24 @@ SECURELY STORING PASSWORDS
  - use cookies Set-Cookie, give it a key, and then pass the new uuid we got. Then you can put a whole bunch of parameters on it. You can set the cookie to expire and it would force the user to login again!
  - every request looks at the token
  - import npm package cooke-parser
+
+ ## Database
+ There are many database options. SQL is a relational query option that is very powerful. We will use MongoDB that stores JSON objects.
+ IT LOOKS LIKE THIS: (its just an array!)
+[
+  {
+    _id: '63b9da7f79',
+    name: 'Mystery player',
+    score: 0,
+    $date: '1/7/2023',
+  },
+  {
+    _id: '63bdf9d855',
+    name: '지안@id.com',
+    $date: '1/10/2023',
+  },
+];
+
+MONGO DB Setup
+Install: npm install mongodb
+Connection String: mongodb+srv://seven:{Cowsgirl700}@cluster0.oytpn7l.mongodb.net/?appName=Cluster0
