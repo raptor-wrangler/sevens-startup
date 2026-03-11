@@ -6,8 +6,8 @@ export function Unauthenticated(props) {
     const [showRegister, setShowRegister] = React.useState(false);
 
     async function loginUser() {
-        const response = await fetch('/api/auth', {
-            method: 'put',
+        const response = await fetch('/api/auth/login', {
+            method: 'post',
             body: JSON.stringify({ username: userName, password: password }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -23,7 +23,7 @@ export function Unauthenticated(props) {
     }
 
     async function createUser() {
-        const response = await fetch('/api/auth', {
+        const response = await fetch('/api/auth/create', {
             method: 'post',
             body: JSON.stringify({ username: userName, password: password }),
             headers: {

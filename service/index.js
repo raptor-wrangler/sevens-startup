@@ -46,7 +46,6 @@ app.post('/api/auth/create', async (req, res) => {
   } else {
     const user = await createUser(req.body.username, req.body.password);
     setAuthCookie(res, user.token);
-    console.log(req.cookies);
     res.send({ username: user.username });
   }
 });
@@ -65,7 +64,7 @@ app.post('/api/auth/login', async (req, res) => {
     res.status(401).send({ msg: 'Unauthorized' });
   });
 
-// Logout endpoint  !!! he broke rn
+// Logout endpoint
 app.delete('/api/auth/logout', async (req, res) => {
   const user = await getUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -105,6 +104,17 @@ app.get('/api/user/fav', verifyAuth, (_req, res) => {
 app.delete('/api/user/fav', verifyAuth, (req, res) => {
   favorites = favorites.filter(fav => fav.Name !== req.query.key);
   res.send(favorites);
+});
+
+// Send Message
+app.post('/api/messages', verifyAuth, (req, res) => {
+  messages.push(req.body);
+  res.send(messages);
+});
+
+// Get messages
+app.get('/api/messages', verifyAuth, (_req, res) => {
+  res.send(messages);
 });
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;

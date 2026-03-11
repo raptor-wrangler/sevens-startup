@@ -95,7 +95,7 @@ function NotFound() {
 }
 
 function logout() {
-    fetch(`/api/auth`, {
+    fetch(`/api/auth/logout`, {
       method: 'delete',
     })
       .catch(() => {
