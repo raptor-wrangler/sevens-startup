@@ -3,14 +3,28 @@ import React from 'react';
 export function Chat({userName}) {
   const [messages, setMessages] = React.useState([]);
   
+  async function getMessages () {
+    const response = await fetch('api/messages', {
+      method: 'get'
+    })
+    const messageList = await response.json();
+    setMessages(messageList);
+  }
+
+  async function addMessage(message) {
+    const response = await fetch('api/messages', {
+      method: 'post',
+      body: message,
+    })
+    const newMessages = await response.json();
+    setMessages(newMessages);
+  }
+
   React.useEffect(() => {
-    const messageList = localStorage.getItem('messages');
-    if (messageList) {
-      setMessages(JSON.parse(messageList));
-    }
+    getMessages();
   }, []);
 
-  const messageList = messages.length ? (
+  const messageList = messages.length >= 1 ? (
     <div className="messageslist">
       {messages.map((message, i) => {
         const isMe = message.name === userName;
@@ -34,7 +48,7 @@ export function Chat({userName}) {
     </div>
   );
   
-  function addMessage() {
+  function addFakeMessage() {
     const newuserName = `User-${Math.floor(Math.random() * 100)}`;
     const message = {
       name: newuserName,
@@ -46,15 +60,12 @@ export function Chat({userName}) {
         hour: "2-digit",
         minute: "2-digit"
       })}
-      setMessages(prevMessages => {
-        const newMessages = prevMessages.concat(message);
-        localStorage.setItem('messages', JSON.stringify(newMessages));
-        return newMessages;
-      });
+      addMessage(message);
   };
+
 React.useEffect(() => {
   const interval = setInterval(() => {
-    addMessage();
+    addFakeMessage();
   }, 15000);
   return () => clearInterval(interval);
 }, []);
@@ -77,11 +88,7 @@ React.useEffect(() => {
               minute: "2-digit"
             })
           };
-          setMessages(prevMessages => {
-            const newMessages = prevMessages.concat(message);
-            localStorage.setItem('messages', JSON.stringify(newMessages));
-            return newMessages;
-          });
+          addMessage(message);
           e.target.reset();
         }} className='chatform'>
           <input className="chatinput" type="text" name="message" placeholder="Type your message here..." required />
