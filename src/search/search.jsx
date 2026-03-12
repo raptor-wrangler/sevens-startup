@@ -13,14 +13,28 @@ export function Search({userName, favoritesList, setFavoritesList}) {
     setGames(gamesList);
   }
 
-  async function storeFavorites(game) {;
-    setFavoritesList(favoritesList.concat(game));
-    localStorage.setItem('favorites', JSON.stringify(favoritesList.concat(game)));
+  async function storeFavorites(game) {
+    const response = await fetch('api/user/fav', {
+      method: 'POST',
+      body: JSON.stringify(game),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    }});
+    const newFav = await response.json();
+    setFavoritesList(favoritesList.concat(newFav));
   }
 
   async function removeFavorite(game) {
+    const response = await
     setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
-    localStorage.setItem('favorites', JSON.stringify(favoritesList.filter(fav => fav.Name !== game.Name)));
+  }
+
+  async function findFavorite(game) {
+    const response = await fetch('api/user/fav', {
+      method: 'get'
+    });
+    const favList = await response.json();
+    return favList.some(fav => fav.Name === game.Name);
   }
 
   React.useEffect(() => {
@@ -62,7 +76,7 @@ export function Search({userName, favoritesList, setFavoritesList}) {
                   <td>{displayedGames.Name}</td>
                   <td><button className='buttonheart'
                     onClick= {() => {
-                      if (!favoritesList.some(game => game.Name === displayedGames.Name)) {;
+                      if (findFavorite(displayedGames) === false) {
                         storeFavorites(displayedGames);
                       } else {
                         removeFavorite(displayedGames);
