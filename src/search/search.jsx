@@ -21,7 +21,7 @@ export function Search({userName, favoritesList, setFavoritesList}) {
         'Content-type': 'application/json; charset=UTF-8',
     }});
     const newFav = await response.json();
-    setFavoritesList(favoritesList.concat(newFav));
+    setFavoritesList(newFav);
   }
 
   async function removeFavorite(game) {

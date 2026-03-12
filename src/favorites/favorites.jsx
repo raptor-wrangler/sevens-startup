@@ -5,10 +5,12 @@ export function Favorites({userName, favoritesList, setFavoritesList}) {
   const navigate = useNavigate();
 
   async function removeFavorite(game) {
+    await fetch(`api/user/fav?key=${game.Name}`, {
+      method: 'delete'
+    })
     setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
-    localStorage.setItem('favorites', JSON.stringify(favoritesList.filter(fav => fav.Name !== game.Name)));
   }
-    
+
     return (
     <main className="maintext">
       <div>
@@ -26,11 +28,6 @@ export function Favorites({userName, favoritesList, setFavoritesList}) {
                     <tr key={index}>
                         <td><img className="gameimg" src={favoritesList.ImagePath} alt={favoritesList.Name} width="100"></img></td>
                         <td>{favoritesList.Name}</td>
-                        {/* <td className="tablebutton"><button className='buttonmain' onClick={() => {
-                            navigate('/chat');
-                            }}>
-                            <img className='svg' src="../../svgs/chat-line-svgrepo-com.svg"></img>
-                            </button></td> */}
                         <td className="tablebutton"><button className='buttonmain'
                             onClick= {() => {
                                 removeFavorite(favoritesList);
