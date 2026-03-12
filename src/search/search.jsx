@@ -25,7 +25,9 @@ export function Search({userName, favoritesList, setFavoritesList}) {
   }
 
   async function removeFavorite(game) {
-    const response = await
+    await fetch(`api/user/fav?key=${game.Name}`, {
+      method: 'delete'
+    })
     setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
   }
 
@@ -75,8 +77,9 @@ export function Search({userName, favoritesList, setFavoritesList}) {
                     : <div>No Image</div>}</td>
                   <td>{displayedGames.Name}</td>
                   <td><button className='buttonheart'
-                    onClick= {() => {
-                      if (findFavorite(displayedGames) === false) {
+                    onClick= {async () => {
+                      const found = await findFavorite(displayedGames)
+                      if (!found) {
                         storeFavorites(displayedGames);
                       } else {
                         removeFavorite(displayedGames);
