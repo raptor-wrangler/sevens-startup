@@ -100,6 +100,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Frontend calls service endpoints** - I think every page in this app now calls to my backend at some point to retrieve and store lists or to authenticate with cookies.
 - [x] **Supports registration, login, logout, and restricted endpoint** - All of my endpoints are restricted and I implemented registration, login, and logout
 
+I think the only thing I wish I had time to figure out was kicking the user back to the login page when their authentication cookie expired.
+
 ## 🚀 DB deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
