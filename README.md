@@ -94,11 +94,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **Node.js/Express HTTP service** - I used express for my backend service and ran everything using Node
-- [x] **Static middleware for frontend** - I used a verify authentication function as middleware in the 
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Static middleware for frontend** - I used express to connect my front and backend
+- [x] **Calls to third party endpoints** - I called to a dad joke website on my about page because I could not find a game third party API that was in JSON format. :(
+- [x] **Backend service endpoints** - There are endpoints for authentication, favorites lists, and chat messages
+- [x] **Frontend calls service endpoints** - I think every page in this app now calls to my backend at some point to retrieve and store lists or to authenticate with cookies.
+- [x] **Supports registration, login, logout, and restricted endpoint** - All of my endpoints are restricted and I implemented registration, login, and logout
 
 ## 🚀 DB deliverable
 
