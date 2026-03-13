@@ -113,7 +113,7 @@ app.post('/api/messages', verifyAuth, (req, res) => {
 });
 
 // Get messages
-app.get('/api/messages', verifyAuth, (_req, res) => {
+app.get('/api/messages', verifyAuth, (req, res) => {
   res.send(messages);
 });
 

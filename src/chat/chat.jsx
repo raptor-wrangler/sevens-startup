@@ -2,6 +2,7 @@ import React from 'react';
 
 export function Chat({userName}) {
   const [messages, setMessages] = React.useState([]);
+  const messagesEndRef = React.useRef(null);
   
   async function getMessages () {
     const response = await fetch('api/messages', {
@@ -14,7 +15,10 @@ export function Chat({userName}) {
   async function addMessage(message) {
     const response = await fetch('api/messages', {
       method: 'post',
-      body: message,
+      body: JSON.stringify(message),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     const newMessages = await response.json();
     setMessages(newMessages);
@@ -41,6 +45,7 @@ export function Chat({userName}) {
           <div className="messagedate">{message.date}</div>
         </div>
       )})}
+      <div ref={messagesEndRef} />
     </div>
   ) : (
     <div className="messageslist">
@@ -48,6 +53,12 @@ export function Chat({userName}) {
     </div>
   );
   
+    React.useEffect(() => {
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, [messages]);
+
   function addFakeMessage() {
     const newuserName = `User-${Math.floor(Math.random() * 100)}`;
     const message = {
