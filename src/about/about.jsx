@@ -1,6 +1,17 @@
 import React from 'react';
 
 export function About() {
+  const [joke, setJoke] = React.useState('');
+
+  React.useEffect(() => {
+    fetch('https://icanhazdadjoke.com/', {
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(res => res.json())
+      .then(data => setJoke(data.joke))
+      .catch(() => setJoke('Failed to fetch a dad joke.'));
+  }, []);
+
   return (
     <main className="maintext">
       <div>
@@ -29,6 +40,10 @@ export function About() {
             </tr>
           </tbody>
         </table>
+        <section id="aboutinfo" style={{padding: '8px'}}>
+          <b>Here's a dad joke for you:</b>
+          <div>{joke}</div>
+        </section>
         </div>
     </main>
   );
