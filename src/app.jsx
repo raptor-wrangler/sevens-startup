@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Search } from './search/search';
 import { Favorites } from './favorites/favorites';
@@ -8,11 +8,9 @@ import { Chat } from './chat/chat';
 import { About } from './about/about';
 import { AuthState } from './login/authState';
 
-
-export async function authFetch(url, options = {}, setAuthState) {
+export async function authFetch(url, options = {}, setAuthState, navigate) {
     const response = await fetch(url, options);
     if (response.status === 401) {
-        const navigate = useNavigate();
         setAuthState(AuthState.Unauthenticated);
         navigate('/');
         return null;
@@ -62,7 +60,6 @@ export default function App() {
                             <img className='svg' src='../svgs/logout-2-svgrepo-com.svg'></img> 
                             <NavLink onClick={() => {
                                 logout();
-                                setAuthState(AuthState.Unauthenticated);
                             }} to="/">Logout</NavLink>
                         </li>
                     )}
@@ -79,8 +76,8 @@ export default function App() {
                     setAuthState(authState);
                 }}/>} 
             exact />
-            <Route path='/search' element={<Search userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList}/>} />
-            <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList}/>} />
+            <Route path='/search' element={<Search userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList} setAuthState={setAuthState}/>} />
+            <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList} setAuthState={setAuthState}/>} />
             <Route path='/chat' element={<Chat userName={userName}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
