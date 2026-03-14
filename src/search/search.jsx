@@ -10,7 +10,6 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
   const [input, setInput] = React.useState("");
   const navigate = useNavigate();
   
-
   async function populateGames() {
     const response = await fetch('/games.json'); //my hope is that I can use a third party call for this later
     const gamesList = await response.json();

@@ -31,16 +31,12 @@ export default function App() {
             try {
             const response = await fetch('/api/auth/me');
             if (response.ok) {
-                const data = await response.json();
-                setUserName(data.username);
                 setAuthState(AuthState.Authenticated);
             } else {
-                setUserName('');
                 setAuthState(AuthState.Unauthenticated);
                 localStorage.removeItem('userName');
             }
             } catch {
-            setUserName('');
             setAuthState(AuthState.Unauthenticated);
             localStorage.removeItem('userName');
             }
@@ -142,16 +138,16 @@ export default function App() {
   );
 
   function logout() {
-      fetch(`/api/auth/logout`, {
+    fetch(`/api/auth/logout`, {
         method: 'delete',
-      })
-        .catch(() => {
-          // Logout failed. Assuming offline
-        })
-        .finally(() => {
-          setAuthState(AuthState.Unauthenticated);
-          localStorage.removeItem('userName');
-        });
+    })
+    .catch(() => {
+        // Logout failed. Assuming offline
+    })
+    .finally(() => {
+        setAuthState(AuthState.Unauthenticated);
+        localStorage.removeItem('userName');
+    });
     }
 }
 
