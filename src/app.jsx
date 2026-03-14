@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { Login } from './login/login';
 import { Search } from './search/search';
 import { Favorites } from './favorites/favorites';
@@ -13,6 +13,7 @@ export async function authFetch(url, options = {}, setAuthState, navigate) {
     if (response.status === 401) {
         alert('Please re-login');
         setAuthState(AuthState.Unauthenticated);
+        localStorage.removeItem('userName');
         navigate('/');
         return null;
     }
@@ -23,7 +24,48 @@ export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
-    const [favoriteslist, setFavoriteslList] = React.useState(localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []);
+    const [favoritesList, setFavoritesList] = React.useState([]);
+
+    React.useEffect(() => {
+        async function checkAuth() {
+            try {
+            const response = await fetch('/api/auth/me');
+            if (response.ok) {
+                const data = await response.json();
+                setUserName(data.username);
+                setAuthState(AuthState.Authenticated);
+            } else {
+                setUserName('');
+                setAuthState(AuthState.Unauthenticated);
+                localStorage.removeItem('userName');
+            }
+            } catch {
+            setUserName('');
+            setAuthState(AuthState.Unauthenticated);
+            localStorage.removeItem('userName');
+            }
+        }
+        checkAuth();
+    }, []);
+
+    React.useEffect(() => {
+        async function fetchFavorites() {
+            if (authState === AuthState.Authenticated) {
+                try {
+                    const response = await fetch('/api/user/fav');
+                    if (response.ok) {
+                        const data = await response.json();
+                        setFavoritesList(data);
+                    }
+                } catch {
+                    setFavoritesList([]);
+                }
+            } else {
+                setFavoritesList([]);
+            }
+        }
+        fetchFavorites();
+    }, [authState]);
 
     return (
     <BrowserRouter>
@@ -77,8 +119,8 @@ export default function App() {
                     setAuthState(authState);
                 }}/>} 
             exact />
-            <Route path='/search' element={<Search userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList} setAuthState={setAuthState}/>} />
-            <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList} setAuthState={setAuthState}/>} />
+            <Route path='/search' element={<Search userName={userName} favoritesList={favoritesList} setFavoritesList={setFavoritesList} setAuthState={setAuthState}/>} />
+            <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoritesList} setFavoritesList={setFavoritesList} setAuthState={setAuthState}/>} />
             <Route path='/chat' element={<Chat userName={userName} setAuthState={setAuthState}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />

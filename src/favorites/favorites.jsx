@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { authFetch } from '../app';
 
-export function Favorites({userName, favoritesList, setFavoritesList}) {
+export function Favorites({userName, favoritesList, setFavoritesList, setAuthState}) {
   const navigate = useNavigate();
 
   async function removeFavorite(game) {
-    await fetch(`api/user/fav?key=${game.Name}`, {
+    await authFetch(`api/user/fav?key=${game.Name}`, {
       method: 'delete'
-    })
+    }, setAuthState, navigate);
     setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
   }
 

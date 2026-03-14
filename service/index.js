@@ -64,6 +64,12 @@ app.post('/api/auth/login', async (req, res) => {
     res.status(401).send({ msg: 'Unauthorized' });
   });
 
+// Endpoint to check if the user is authenticated
+app.get('/api/auth/me', verifyAuth, async (req, res) => {
+  const user = await getUser('token', req.cookies[authCookieName]);
+  res.send({username: user.username});
+});
+
 // Logout endpoint
 app.delete('/api/auth/logout', async (req, res) => {
   const user = await getUser('token', req.cookies[authCookieName]);

@@ -41,11 +41,15 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
   }
 
   async function findFavorite(game) {
-    const response = await fetch('api/user/fav', {
-      method: 'get'
-    }, setAuthState, navigate);
-    if (!response) return false;
-    return true;
+    try {
+      const response = await fetch('api/user/fav', {
+        method: 'get'
+      });
+      const favList = await response.json();
+      return favList.some(fav => fav.Name === game.Name);
+    } catch {
+      return false;
+    }
   }
 
   React.useEffect(() => {
