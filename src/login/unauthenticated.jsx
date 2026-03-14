@@ -18,7 +18,7 @@ export function Unauthenticated(props) {
             props.onLogin(userName);
         } else {
             const body = await response.json();
-            alert(`Error: ${body.msg}`);
+            alert('Unknown username or password');
         }
     }
 
@@ -35,7 +35,7 @@ export function Unauthenticated(props) {
             props.onLogin(userName);
         } else {
             const body = await response.json();
-            alert(`Error: ${body.msg}`);
+            alert('Existing User');
         }
     }
 

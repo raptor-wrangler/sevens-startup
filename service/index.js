@@ -32,7 +32,7 @@ async function getUser(field, value) {
 // Create a token for the user and send a cookie containing the token
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    maxAge: 3 * 60 * 60 * 1000,
+    maxAge: 15 * 1000,
     secure: true,
     httpOnly: true,
     sameSite: 'strict',

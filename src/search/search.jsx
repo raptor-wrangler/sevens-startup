@@ -41,7 +41,7 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
   }
 
   async function findFavorite(game) {
-    const response = await authFetch('api/user/fav', {
+    const response = await fetch('api/user/fav', {
       method: 'get'
     }, setAuthState, navigate);
     if (!response) return false;

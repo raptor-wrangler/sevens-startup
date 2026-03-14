@@ -11,6 +11,7 @@ import { AuthState } from './login/authState';
 export async function authFetch(url, options = {}, setAuthState, navigate) {
     const response = await fetch(url, options);
     if (response.status === 401) {
+        alert('Please re-login');
         setAuthState(AuthState.Unauthenticated);
         navigate('/');
         return null;
@@ -78,7 +79,7 @@ export default function App() {
             exact />
             <Route path='/search' element={<Search userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList} setAuthState={setAuthState}/>} />
             <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoriteslist} setFavoritesList={setFavoriteslList} setAuthState={setAuthState}/>} />
-            <Route path='/chat' element={<Chat userName={userName}/>} />
+            <Route path='/chat' element={<Chat userName={userName} setAuthState={setAuthState}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
         </Routes>

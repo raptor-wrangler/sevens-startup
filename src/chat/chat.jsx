@@ -1,25 +1,30 @@
 import React from 'react';
+import { authFetch } from '../app';
+import { useNavigate } from 'react-router-dom';
 
-export function Chat({userName}) {
+export function Chat({userName, setAuthState}) {
   const [messages, setMessages] = React.useState([]);
   const messagesEndRef = React.useRef(null);
+  const navigate = useNavigate();
   
   async function getMessages () {
-    const response = await fetch('api/messages', {
+    const response = await authFetch('api/messages', {
       method: 'get'
-    })
+    }, setAuthState, navigate);
+    if (!response) return;
     const messageList = await response.json();
     setMessages(messageList);
   }
 
   async function addMessage(message) {
-    const response = await fetch('api/messages', {
+    const response = await authFetch('api/messages', {
       method: 'post',
       body: JSON.stringify(message),
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    }, setAuthState, navigate);
+    if (!response) return;
     const newMessages = await response.json();
     setMessages(newMessages);
   }
