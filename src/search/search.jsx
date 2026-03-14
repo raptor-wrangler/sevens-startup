@@ -1,12 +1,13 @@
 import React from 'react';
+import { authFetch } from '../app';
 
-export function Search({userName, favoritesList, setFavoritesList}) {
+export function Search({userName, favoritesList, setFavoritesList, setAuthState}) {
   const [games, setGames] = React.useState([]);
   const [displayedGames, setDisplayedGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
   const [search, setSearch] = React.useState("");
   const [input, setInput] = React.useState("");
-
+  
   async function populateGames() {
     const response = await fetch('/games.json'); //my hope is that I can use a third party call for this later
     const gamesList = await response.json();
@@ -14,27 +15,32 @@ export function Search({userName, favoritesList, setFavoritesList}) {
   }
 
   async function storeFavorites(game) {
-    const response = await fetch('api/user/fav', {
+    const response = await authFetch('api/user/fav', {
       method: 'POST',
       body: JSON.stringify(game),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
-    }});
-    const newFav = await response.json();
-    setFavoritesList(newFav);
+    }}, setAuthState);
+    if (!response) {
+      return;
+    } else {
+      const newFav = await response.json();
+      setFavoritesList(newFav);
+    }
   }
 
   async function removeFavorite(game) {
-    await fetch(`api/user/fav?key=${game.Name}`, {
+    const response = await authFetch(`api/user/fav?key=${game.Name}`, {
       method: 'delete'
-    })
+    }, setAuthState);
+    if (!response) return;
     setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
   }
 
   async function findFavorite(game) {
     const response = await fetch('api/user/fav', {
       method: 'get'
-    });
+    }, setAuthState);
     const favList = await response.json();
     return favList.some(fav => fav.Name === game.Name);
   }
