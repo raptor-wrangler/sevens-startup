@@ -140,4 +140,16 @@ SECURELY STORING PASSWORDS
 
 MONGO DB Setup
 Install: npm install mongodb
-Connection String: mongodb+srv://seven:{Cowsgirl700}@cluster0.oytpn7l.mongodb.net/?appName=Cluster0
+Connection String: mongodb+srv://seven:{PSWD}@cluster0.oytpn7l.mongodb.net/?appName=Cluster0
+
+## Testing
+framing the problem / code / debugging / testing - these are the vital pillars of coding
+
+Make test code modular - put it in a different file.
+Jest and Playwright
+
+## Websocket
+it's just an upgrade of HTTP. It has widespread support because it's just HTTP
+Make a request to the serve with the headers of Upgrade: websocket and Connection: Upgrade. That's how to make an HTTP request into a websocket request.
+Initiate a websocket connection to the backend on both ends. This is proxy peer-to-peer.
+The live server vscode extention was using websocket!
