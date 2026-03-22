@@ -18,16 +18,16 @@ const favCollection = db.collection('favorite');
   }
 })();
 
+async function addUser(user) {
+  await userCollection.insertOne(user);
+}
+
 function getUser(username) {
   return userCollection.findOne({ username: username });
 }
 
 function getUserByToken(token) {
   return userCollection.findOne({ token: token });
-}
-
-async function addUser(user) {
-  await userCollection.insertOne(user);
 }
 
 async function updateUser(user) {
@@ -39,12 +39,14 @@ async function updateUserRemoveAuth(user) {
 }
 
 async function addFavorite(user, favorite) {
-  return favCollection.user.insertOne(favorite);
+  return favCollection.find(user).insertOne(favorite);
 }
 
 function getFavorites(user) {
-  return favCollection.find(user);
+  return favCollection.find(user).favorite;
 }
+
+addUser({ username: 'seven' });
 
 module.exports = {
   getUser,

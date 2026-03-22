@@ -3,6 +3,7 @@ const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -20,7 +21,7 @@ async function createUser(username, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
   return user;
 }
 
