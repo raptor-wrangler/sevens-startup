@@ -10,7 +10,6 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 const authCookieName = 'token';
-const users = [];
 let favorites = [];
 const messages = [];
 
@@ -27,7 +26,10 @@ async function createUser(username, password) {
 
 async function getUser(field, value) {
   if (!value) return null;
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 // Create a token for the user and send a cookie containing the token
@@ -70,7 +72,7 @@ app.post('/api/auth/login', async (req, res) => {
 app.delete('/api/auth/logout', async (req, res) => {
   const user = await getUser('token', req.cookies[authCookieName]);
   if (user) {
-    delete user.token;
+    await DB.updateUserRemoveAuth(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -97,20 +99,21 @@ app.get('/api/auth/me', verifyAuth, async (req, res) => {
 });
 
 // Add Favorites
-app.post('/api/user/fav', verifyAuth, (req, res) => {
-  favorites.push(req.body);
-  res.send(favorites);
+app.post('/api/user/fav', verifyAuth, async (req, res) => {
+  const favs = await DB.addFavorite(req.body.username, req.body.favorites);
+  res.send(favs);
 });
 
 // Get Favorites
-app.get('/api/user/fav', verifyAuth, (_req, res) => {
-  res.send(favorites);
+app.get('/api/user/fav', verifyAuth, async (req, res) => {
+  const favs = await DB.getFavorites(req.body.username);
+  res.send(favs);
 });
 
 //Delete Favorites
-app.delete('/api/user/fav', verifyAuth, (req, res) => {
-  favorites = favorites.filter(fav => fav.Name !== req.query.key);
-  res.send(favorites);
+app.delete('/api/user/fav', verifyAuth, async (req, res) => {
+  const favs = await DB.deleteFavorite(req.body.username, req.body.favorites);
+  res.send(favs);
 });
 
 // Send Message
