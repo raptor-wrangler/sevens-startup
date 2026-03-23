@@ -62,7 +62,8 @@ async function getGames(limit) {
 }
 
 async function findGame(name) {
-  return gameCollection.findOne({ Name: name });
+  return gameCollection.find(
+    { Name: { $regex: name, $options: 'i' } });
 }
 
 module.exports = {

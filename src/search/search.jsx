@@ -18,6 +18,15 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
     }
   }
 
+  async function findGame(name) {
+    const response = await authFetch(`/api/games?name=${name}`, { method: 'GET' }, setAuthState, navigate);
+    if (response && response.ok) {
+      const game = await response.json();
+      return game;
+    }
+    return null;
+  }
+
   async function storeFavorites(game) {
     const response = await authFetch('api/user/fav', {
       method: 'POST',
@@ -57,12 +66,15 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
 
   React.useEffect(() => {
     if (search === "") {
-      setDisplayedGames(games.slice(0, listLength));
+      setDisplayedGames(games);
     } else {
-      const filtered = games.filter(game =>
-        game.Name.toLowerCase().includes(search.toLowerCase())
-      );
-      setDisplayedGames(filtered.slice(0, listLength));
+      findGame(search).then(game => {
+        if (game) {
+          setDisplayedGames([game]);
+        } else {
+          setDisplayedGames([]);
+        }
+      });
     }
   }, [search, games, listLength]);
 

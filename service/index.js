@@ -58,6 +58,7 @@ app.post('/api/auth/login', async (req, res) => {
     if (user) {
       if (await bcrypt.compare(req.body.password, user.password)) {
         user.token = uuid.v4();
+        await DB.updateUser(user);
         setAuthCookie(res, user.token);
         res.send({ username: user.username });
         return;
@@ -132,7 +133,7 @@ app.get('/api/games', verifyAuth, async (req, res) => {
   res.send(games);
 });
 
-app.get('/api/games/name', verifyAuth, async (req, res) => {
+app.get('/api/games', verifyAuth, async (req, res) => {
   const game = await DB.findGame(req.query.name);
   if (game) {
     res.send(game);
