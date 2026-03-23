@@ -10,7 +10,6 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 const authCookieName = 'token';
-let favorites = [];
 const messages = [];
 
 async function createUser(username, password) {
@@ -100,7 +99,7 @@ app.get('/api/auth/me', verifyAuth, async (req, res) => {
 
 // Add Favorites
 app.post('/api/user/fav', verifyAuth, async (req, res) => {
-  const favs = await DB.addFavorite(req.body.username, req.body.favorites);
+  const favs = await DB.addFavorite(req.body.username, req.body.favorite);
   res.send(favs);
 });
 
@@ -112,7 +111,7 @@ app.get('/api/user/fav', verifyAuth, async (req, res) => {
 
 //Delete Favorites
 app.delete('/api/user/fav', verifyAuth, async (req, res) => {
-  const favs = await DB.deleteFavorite(req.body.username, req.body.favorites);
+  const favs = await DB.deleteFavorite(req.body.username, req.body.favorite);
   res.send(favs);
 });
 
@@ -125,6 +124,12 @@ app.post('/api/messages', verifyAuth, (req, res) => {
 // Get messages
 app.get('/api/messages', verifyAuth, (req, res) => {
   res.send(messages);
+});
+
+// Get Games
+app.get('/api/games', verifyAuth, async (req, res) => {
+  const games = await DB.getGames(parseInt(req.query.limit));
+  res.send(games);
 });
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
