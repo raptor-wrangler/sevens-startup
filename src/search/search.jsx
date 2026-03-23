@@ -10,10 +10,12 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
   const [input, setInput] = React.useState("");
   const navigate = useNavigate();
   
-  async function populateGames() {
-    const response = await fetch('/games.json'); //my hope is that I can use a third party call for this later
-    const gamesList = await response.json();
-    setGames(gamesList);
+  async function populateGames(listLength) {
+    const response = await authFetch(`/api/games?limit=${listLength}`, { method: 'GET' }, setAuthState, navigate);
+    if (response && response.ok) {
+      const gamesList = await response.json();
+      setGames(gamesList);
+    }
   }
 
   async function storeFavorites(game) {
@@ -23,12 +25,10 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
     }}, setAuthState, navigate);
-    if (!response) {
-      return;
-    } else {
-      const newFav = await response.json();
-      setFavoritesList(newFav);
-    }
+    if (response && response.ok) {
+    const newFav = await response.json();
+    setFavoritesList(newFav);
+  }
   }
 
   async function removeFavorite(game) {
@@ -52,8 +52,8 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
   }
 
   React.useEffect(() => {
-    populateGames();
-  }, []);
+    populateGames(listLength);
+  }, [listLength]);
 
   React.useEffect(() => {
     if (search === "") {

@@ -132,6 +132,15 @@ app.get('/api/games', verifyAuth, async (req, res) => {
   res.send(games);
 });
 
+app.get('/api/games/name', verifyAuth, async (req, res) => {
+  const game = await DB.findGame(req.query.name);
+  if (game) {
+    res.send(game);
+  } else {
+    res.status(404).send({ msg: 'Game not found' });
+  }
+});
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

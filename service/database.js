@@ -61,6 +61,10 @@ async function getGames(limit) {
   return gameCollection.find().limit(limit).toArray();
 }
 
+async function findGame(name) {
+  return gameCollection.findOne({ Name: name });
+}
+
 module.exports = {
   getUser,
   getUserByToken,
@@ -71,4 +75,5 @@ module.exports = {
   getFavorites,
   deleteFavorite,
   getGames,
+  findGame,
 };
