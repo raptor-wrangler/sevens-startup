@@ -6,10 +6,20 @@ export function Favorites({userName, favoritesList, setFavoritesList, setAuthSta
   const navigate = useNavigate();
 
   async function removeFavorite(game) {
-    await authFetch(`api/user/fav?key=${game.Name}`, {
-      method: 'delete'
+    const response = await authFetch(`api/user/fav`, {
+      method: 'delete',
+      body: JSON.stringify({
+        favorite: game,
+        username: userName
+      }),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
     }, setAuthState, navigate);
-    setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
+    if (response && response.ok) {
+      const newFavs = await response.json();
+      setFavoritesList(newFavs);
+    }
   }
 
     return (
@@ -25,13 +35,13 @@ export function Favorites({userName, favoritesList, setFavoritesList, setAuthSta
             ) : (
             <table>
                 <tbody>
-                    {favoritesList.map((favoritesList, index) => (
+                    {favoritesList.map((fav, index) => (
                     <tr key={index}>
-                        <td><img className="gameimg" src={favoritesList.ImagePath} alt={favoritesList.Name} width="100"></img></td>
-                        <td>{favoritesList.Name}</td>
+                        <td><img className="gameimg" src={fav.ImagePath} alt={fav.Name} width="100"></img></td>
+                        <td>{fav.Name}</td>
                         <td className="tablebutton"><button className='buttonmain'
                             onClick= {() => {
-                                removeFavorite(favoritesList);
+                                removeFavorite(fav);
                             }}>
                             <img className='svg' src="../../svgs/trash-bin-minimalistic-svgrepo-com.svg"/>
                             </button>

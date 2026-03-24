@@ -2,13 +2,12 @@ import React from 'react';
 import { authFetch } from '../app';
 import { useNavigate } from 'react-router-dom';
 
-export function Search({userName, setAuthState}) {
+export function Search({userName, favoritesList, setFavoritesList, setAuthState}) {
   const [games, setGames] = React.useState([]);
   const [displayedGames, setDisplayedGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
   const [search, setSearch] = React.useState("");
   const [input, setInput] = React.useState("");
-  const [favoritesList, setFavoritesList] = React.useState([]);
   const navigate = useNavigate();
   
   async function populateGames(listLength) {
@@ -32,7 +31,7 @@ export function Search({userName, setAuthState}) {
     const response = await authFetch('api/user/fav', {
       method: 'POST',
       body: JSON.stringify({
-        favorite: JSON.stringify(game),
+        favorite: game,
         username: userName
       }),
       headers: {
@@ -41,6 +40,7 @@ export function Search({userName, setAuthState}) {
     if (response && response.ok) {
       const newFav = await response.json();
       setFavoritesList(newFav);
+      console.log(favoritesList);
     }
   }
 
@@ -48,12 +48,15 @@ export function Search({userName, setAuthState}) {
     const response = await authFetch(`api/user/fav`, {
       method: 'delete',
       body: JSON.stringify({
-        favorite: JSON.stringify(game),
+        favorite: game,
         username: userName
       }),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
     }, setAuthState, navigate);
-    if (!response) return;
-    setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
+    const newFavs = await response.json();
+    setFavoritesList(newFavs);
   }
 
   async function findFavorite(game) {
@@ -62,7 +65,7 @@ export function Search({userName, setAuthState}) {
         method: 'get',
       });
       const favList = await response.json();
-
+      console.log(favList);
       return favList.some(fav => fav.Name === game.Name);
     } catch {
       return false;

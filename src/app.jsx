@@ -24,6 +24,7 @@ export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
+    const [favoritesList, setFavoritesList] = React.useState([]);
 
     React.useEffect(() => {
         async function checkAuth() {
@@ -46,7 +47,11 @@ export default function App() {
     React.useEffect(() => {
         async function fetchFavorites() {
             if (authState === AuthState.Authenticated) {
-                await fetch(`/api/user/fav?username=${userName}`);
+                const response = await fetch(`/api/user/fav?username=${userName}`);
+                if (response.ok) {
+                    const favs = await response.json();
+                    setFavoritesList(favs);
+                }
             }
         }
         fetchFavorites();
@@ -104,8 +109,8 @@ export default function App() {
                     setAuthState(authState);
                 }}/>} 
             exact />
-            <Route path='/search' element={<Search userName={userName} setAuthState={setAuthState}/>} />
-            <Route path='/favorites' element={<Favorites userName={userName} setAuthState={setAuthState}/>} />
+            <Route path='/search' element={<Search userName={userName} favoritesList={favoritesList} setFavoritesList={setFavoritesList} setAuthState={setAuthState}/>} />
+            <Route path='/favorites' element={<Favorites userName={userName} favoritesList={favoritesList} setFavoritesList={setFavoritesList} setAuthState={setAuthState}/>} />
             <Route path='/chat' element={<Chat userName={userName} setAuthState={setAuthState}/>} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />

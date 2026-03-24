@@ -1,6 +1,5 @@
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
-const { use } = require('react');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
@@ -47,11 +46,13 @@ async function addFavorite(user, favorite) {
 
 async function getFavorites(user) {
   const userFavs= await userCollection.findOne({ username: user });
-  return userFavs.favorites;
+  return userFavs ? userFavs.favorites : [];
 }
 
 async function deleteFavorite(user, favorite) {
-  return userCollection.updateOne({ username: user }, { $pull: { favorites: favorite } });
+  await userCollection.updateOne({ username: user }, { $pull: { favorites: favorite } });
+  const updatedUser = await userCollection.findOne({ username: user });
+  return updatedUser ? updatedUser.favorites : [];
 }
 
 async function getGames(limit) {
