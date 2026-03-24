@@ -107,7 +107,7 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
             )}
         <table>
           <tbody>
-            {displayedGames.map((displayedGames, index) => (
+            {displayedGames.slice(0, listLength).map((displayedGames, index) => (
               <tr key={index}>
                   <td>{displayedGames.ImagePath ? 
                     <img className="gameimg" src={displayedGames.ImagePath} alt={displayedGames.Name} width="100"></img> 

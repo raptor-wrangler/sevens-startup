@@ -91,9 +91,10 @@ export default function App() {
                     {authState === AuthState.Authenticated && (
                         <li className="logoutnav">
                             <img className='svg' src='../svgs/logout-2-svgrepo-com.svg'></img> 
-                            <NavLink onClick={() => {
+                            <button style={{ background: 'none', border: 'none', marginLeft: 8, cursor: 'pointer', fontSize: 'inherit' }} 
+                            onClick={() => {
                                 logout();
-                            }} to="/">Logout</NavLink>
+                            }}>Logout</button>
                         </li>
                     )}
                 </menu>
@@ -141,6 +142,7 @@ export default function App() {
     .finally(() => {
         setAuthState(AuthState.Unauthenticated);
         localStorage.removeItem('userName');
+        window.location.href = '/';
     });
     }
 }
