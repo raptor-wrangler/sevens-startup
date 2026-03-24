@@ -2,12 +2,13 @@ import React from 'react';
 import { authFetch } from '../app';
 import { useNavigate } from 'react-router-dom';
 
-export function Search({userName, favoritesList, setFavoritesList, setAuthState}) {
+export function Search({userName, setAuthState}) {
   const [games, setGames] = React.useState([]);
   const [displayedGames, setDisplayedGames] = React.useState([]);
   const [listLength, setListLength] = React.useState(20);
   const [search, setSearch] = React.useState("");
   const [input, setInput] = React.useState("");
+  const [favoritesList, setFavoritesList] = React.useState([]);
   const navigate = useNavigate();
   
   async function populateGames(listLength) {
@@ -30,19 +31,26 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
   async function storeFavorites(game) {
     const response = await authFetch('api/user/fav', {
       method: 'POST',
-      body: JSON.stringify(game),
+      body: JSON.stringify({
+        favorite: JSON.stringify(game),
+        username: userName
+      }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
     }}, setAuthState, navigate);
     if (response && response.ok) {
-    const newFav = await response.json();
-    setFavoritesList(newFav);
-  }
+      const newFav = await response.json();
+      setFavoritesList(newFav);
+    }
   }
 
   async function removeFavorite(game) {
-    const response = await authFetch(`api/user/fav?key=${game.Name}`, {
-      method: 'delete'
+    const response = await authFetch(`api/user/fav`, {
+      method: 'delete',
+      body: JSON.stringify({
+        favorite: JSON.stringify(game),
+        username: userName
+      }),
     }, setAuthState, navigate);
     if (!response) return;
     setFavoritesList(favoritesList.filter(fav => fav.Name !== game.Name));
@@ -50,10 +58,11 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
 
   async function findFavorite(game) {
     try {
-      const response = await fetch('api/user/fav', {
-        method: 'get'
+      const response = await fetch(`api/user/fav?username=${userName}`, {
+        method: 'get',
       });
       const favList = await response.json();
+
       return favList.some(fav => fav.Name === game.Name);
     } catch {
       return false;

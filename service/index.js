@@ -18,6 +18,7 @@ async function createUser(username, password) {
     username: username,
     password: passwordHash,
     token: uuid.v4(),
+    favorites: [],
   };
   await DB.addUser(user);
   return user;
@@ -101,18 +102,21 @@ app.get('/api/auth/me', verifyAuth, async (req, res) => {
 // Add Favorites
 app.post('/api/user/fav', verifyAuth, async (req, res) => {
   const favs = await DB.addFavorite(req.body.username, req.body.favorite);
+  console.log(favs);
   res.send(favs);
 });
 
 // Get Favorites
 app.get('/api/user/fav', verifyAuth, async (req, res) => {
-  const favs = await DB.getFavorites(req.body.username);
+  const favs = await DB.getFavorites(req.query.username );
+  console.log(favs);
   res.send(favs);
 });
 
 //Delete Favorites
 app.delete('/api/user/fav', verifyAuth, async (req, res) => {
   const favs = await DB.deleteFavorite(req.body.username, req.body.favorite);
+  console.log(favs);
   res.send(favs);
 });
 
