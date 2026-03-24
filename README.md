@@ -100,14 +100,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Frontend calls service endpoints** - I think every page in this app now calls to my backend at some point to retrieve and store lists or to authenticate with cookies.
 - [x] **Supports registration, login, logout, and restricted endpoint** - All of my endpoints are restricted and I implemented registration, login, and logout
 
-I think the only thing I wish I had time to figure out was kicking the user back to the login page when their authentication cookie expired.
 
 ## 🚀 DB deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - I DID IT. It took a lot of time and sdjusting, but everything I want in the DB is in there stored properly. Searching the DB was kinda difficult to implement but I did it. I don't want messages to be stored in the DB
+- [x] **Stores credentials in MongoDB** - After much struggle, credentials work as indended!
+
+I also fixed the logout problem! Now it goes to the right place. The problem was that I was using a navlink when the logout function did the navigation just fine.
 
 ## 🚀 WebSocket deliverable
 
