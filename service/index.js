@@ -102,21 +102,18 @@ app.get('/api/auth/me', verifyAuth, async (req, res) => {
 // Add Favorites
 app.post('/api/user/fav', verifyAuth, async (req, res) => {
   const favs = await DB.addFavorite(req.body.username, req.body.favorite);
-  console.log(favs);
   res.send(favs);
 });
 
 // Get Favorites
 app.get('/api/user/fav', verifyAuth, async (req, res) => {
   const favs = await DB.getFavorites(req.query.username );
-  console.log(favs);
   res.send(favs);
 });
 
 //Delete Favorites
 app.delete('/api/user/fav', verifyAuth, async (req, res) => {
   const favs = await DB.deleteFavorite(req.body.username, req.body.favorite);
-  console.log(favs);
   res.send(favs);
 });
 
@@ -133,16 +130,16 @@ app.get('/api/messages', verifyAuth, (req, res) => {
 
 // Get Games
 app.get('/api/games', verifyAuth, async (req, res) => {
-  const games = await DB.getGames(parseInt(req.query.limit));
-  res.send(games);
-});
-
-app.get('/api/games', verifyAuth, async (req, res) => {
-  const game = await DB.findGame(req.query.name);
-  if (game) {
-    res.send(game);
+  if (req.query.name) {
+    const game = await DB.findGame(req.query.name);
+    if (game.length > 0) {
+      res.send(game);
+    } else {
+      res.status(404).send({ msg: 'Game not found' });
+    }
   } else {
-    res.status(404).send({ msg: 'Game not found' });
+    const games = await DB.getGames(parseInt(req.query.limit));
+    res.send(games);
   }
 });
 

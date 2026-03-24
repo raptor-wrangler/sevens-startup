@@ -40,7 +40,6 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
     if (response && response.ok) {
       const newFav = await response.json();
       setFavoritesList(newFav);
-      console.log(favoritesList);
     }
   }
 
@@ -65,7 +64,6 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
         method: 'get',
       });
       const favList = await response.json();
-      console.log(favList);
       return favList.some(fav => fav.Name === game.Name);
     } catch {
       return false;
@@ -82,13 +80,13 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
     } else {
       findGame(search).then(game => {
         if (game) {
-          setDisplayedGames([game]);
+          setDisplayedGames(game);
         } else {
           setDisplayedGames([]);
         }
       });
     }
-  }, [search, games, listLength]);
+  }, [search, games]);
 
   return (
     <main className="maintext">
@@ -104,6 +102,9 @@ export function Search({userName, favoritesList, setFavoritesList, setAuthState}
             <img className='svg' src="../../svgs/minimalistic-magnifer-svgrepo-com.svg" />
           </button>
         </form>
+            {displayedGames.length === 0 && (
+              <div>No games found.</div>
+            )}
         <table>
           <tbody>
             {displayedGames.map((displayedGames, index) => (

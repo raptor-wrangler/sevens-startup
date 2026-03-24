@@ -60,9 +60,11 @@ async function getGames(limit) {
 }
 
 async function findGame(name) {
-  return gameCollection.find(
-    { Name: { $regex: name, $options: 'i' } });
+  const result = await gameCollection.find(
+    { Name: { $regex: name, $options: 'i' } }).toArray();
+  return result;
 }
+
 
 module.exports = {
   getUser,
